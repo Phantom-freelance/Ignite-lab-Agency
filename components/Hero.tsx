@@ -18,7 +18,7 @@ export default function Hero() {
       {/* Main Content Area */}
       <div className="relative z-10 mx-auto px-6 pt-30 md:px-12 h-full flex flex-col justify-center">
         {/* Description */}
-        <h3 className="text-2xl md:text-5xl lg:text-5xl font-light leading-tight max-w-2xl font-poppins pt-30">
+        <h3 className="text-2xl md:text-5xl lg:text-5xl font-light leading-tight max-w-2xl font-poppins ">
           We unite top freelancers under one roof — flexible, fast, escrow-protected.
         </h3>
 

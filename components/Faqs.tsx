@@ -58,11 +58,11 @@ const FAQSection = () => {
         <div className="hidden lg:flex flex-[0_0_20%] justify-start items-start pointer-events-none">
           <motion.div 
             initial={{ opacity: 0, x: 100 }}
-            whileInView={{ opacity: 1, x: 200, y: 60 }}
+            whileInView={{ opacity: 1, x: 160, y: 60 }}
             className="relative w-full aspect-square scale-125"
           >
             <Image 
-              src="/QuestionMark.png" 
+              src="/QuestionMark.svg" 
               alt="Decoration"
               fill
               className="object-contain object-left"
