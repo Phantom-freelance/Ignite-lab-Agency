@@ -1,7 +1,7 @@
 "use client";
 import React from 'react';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 import { 
   Check, 
   Monitor, 
@@ -11,6 +11,33 @@ import {
   Cloud, 
   Target 
 } from 'lucide-react';
+
+// 1. Keep these here, outside the component
+const contentVariants: Variants = {
+  hidden: { opacity: 0, x: -20 },
+  visible: { 
+    opacity: 1, 
+    x: 0, 
+    transition: { duration: 0.5, ease: "easeOut" } 
+  }
+};
+
+const cardVariants: Variants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: { 
+    opacity: 1, 
+    y: 0, 
+    transition: { 
+      duration: 0.8, 
+      ease: [0.33, 1, 0.68, 1],
+      staggerChildren: 0.12,
+      delayChildren: 0.2
+    } 
+  },
+  hoverState: {
+    // defined here so the compiler knows it exists
+  }
+};
 
 const SpecialistsSection = () => {
   const expertise = [
@@ -46,28 +73,7 @@ const SpecialistsSection = () => {
     }
   ];
 
-  const cardVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: { 
-      opacity: 1, 
-      y: 0, 
-      transition: { 
-        duration: 0.8, 
-        ease: [0.33, 1, 0.68, 1],
-        staggerChildren: 0.12,
-        delayChildren: 0.2
-      } 
-    }
-  };
-
-  const contentVariants = {
-    hidden: { opacity: 0, x: -20 },
-    visible: { 
-      opacity: 1, 
-      x: 0, 
-      transition: { duration: 0.5, ease: "easeOut" } 
-    }
-  };
+  // NOTE: I DELETED THE REDUNDANT VARIANTS THAT WERE PREVIOUSLY HERE
 
   return (
     <section className="relative bg-[#FFD700] py-24 px-6 md:px-20 overflow-hidden text-black font-sans">
@@ -93,7 +99,7 @@ const SpecialistsSection = () => {
             Work Only with Specialists
           </h2>
           <p className="text-2xl md:text-3xl font-regular leading-tight ">
-            You would never go to your GP for heart surgery. So why would you get your most important online assets, your website, developed by a generalist "full service" marketing, SEO or creative agency? We've handpicked our web design Melbourne family to be top-notch web designers, web developers, conversion specialists, business analysts, API integrators, project managers and digital strategists - we're true web purists. Everything from simple websites to full business operational solutions.
+            You would never go to your GP for heart surgery... We&apos;re true web purists. Everything from simple websites to full business operational solutions.
           </p>
         </motion.div>
 
@@ -105,7 +111,7 @@ const SpecialistsSection = () => {
               variants={cardVariants}
               initial="hidden"
               whileInView="visible"
-              whileHover="hoverState" // Trigger internal hover animations
+              whileHover="hoverState"
               viewport={{ once: true, amount: 0.1 }}
               className="relative flex flex-col pt-4 pl-14 pb-8 pr-4"
             >
@@ -119,16 +125,14 @@ const SpecialistsSection = () => {
                 />
               </div>
 
-              {/* Icon Area with Zoom Animation */}
+              {/* Icon Area */}
               <motion.div variants={contentVariants} className="relative mb-10 mt-2">
-                {/* Background Pulse Circle */}
                 <motion.div 
                   animate={{ scale: [1, 1.15, 1] }}
                   transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
                   className="absolute -left-5 w-24 h-24 bg-black/10 rounded-full" 
                 />
                 
-                {/* Main Icon with Hover Zoom */}
                 <motion.div 
                   variants={{
                     hoverState: { scale: 1.25, rotate: 5 }
@@ -141,7 +145,7 @@ const SpecialistsSection = () => {
               </motion.div>
 
               {/* Title */}
-              <motion.h3 variants={contentVariants} className="text-3xl font-bold  leading-tight text-black min-h-[80px]">
+              <motion.h3 variants={contentVariants} className="text-3xl font-bold leading-tight text-black min-h-[80px]">
                 {item.title}
               </motion.h3>
 

@@ -1,11 +1,10 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
 import Image from "next/image";
+import { motion, Variants } from "framer-motion";
 
 const LogoTicker = () => {
-  // Replace these with your actual logo file paths
   const logos = [
     "/logo-1.svg",
     "/logo-2.svg",
@@ -14,16 +13,14 @@ const LogoTicker = () => {
     "/logo-5.svg",
   ];
 
-  // We duplicate the array to ensure a seamless infinite loop
-  const duplicatedLogos = [...logos, ...logos, ...logos, ...logos];
-
-  const rowVariants = {
+  // 1. Keep this version (The one with Variants and as const)
+  const rowVariants: Variants = { 
     animateRight: {
       x: ["-50%", "0%"],
       transition: {
         x: {
           repeat: Infinity,
-          repeatType: "loop",
+          repeatType: "loop" as const,
           duration: 20,
           ease: "linear",
         },
@@ -34,7 +31,7 @@ const LogoTicker = () => {
       transition: {
         x: {
           repeat: Infinity,
-          repeatType: "loop",
+          repeatType: "loop" as const,
           duration: 25,
           ease: "linear",
         },
@@ -42,12 +39,14 @@ const LogoTicker = () => {
     },
   };
 
+  const duplicatedLogos = [...logos, ...logos, ...logos, ...logos];
+
+  // NOTE: I DELETED THE SECOND "const rowVariants" THAT WAS HERE
+
   return (
     <section className="bg-black pb-30 overflow-hidden">
-      
-
       <div className="flex flex-col gap-12">
-        {/* ROW 1: Left to Right */}
+        {/* ROW 1 */}
         <div className="flex overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_15%,black_85%,transparent)]">
           <motion.div
             variants={rowVariants}
@@ -68,13 +67,12 @@ const LogoTicker = () => {
           </motion.div>
         </div>
 
-        {/* ROW 2: Left to Right (Slightly slower for parallax effect) */}
+        {/* ROW 2 */}
         <div className="flex overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_15%,black_85%,transparent)]">
           <motion.div
             variants={rowVariants}
             animate="animateRight"
             className="flex flex-none gap-24 pr-24"
-            style={{ transitionDuration: "30s" }}
           >
             {duplicatedLogos.map((logo, index) => (
               <div key={`row2-${index}`} className="flex-none">
@@ -90,7 +88,7 @@ const LogoTicker = () => {
           </motion.div>
         </div>
 
-        {/* ROW 3: Left to Right */}
+        {/* ROW 3 */}
         <div className="flex overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_15%,black_85%,transparent)]">
           <motion.div
             variants={rowVariants}

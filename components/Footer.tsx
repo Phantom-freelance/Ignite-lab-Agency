@@ -1,54 +1,63 @@
 "use client";
 
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 import Image from 'next/image';
 
-const Footer = () => {
-  // Animation Variants for content entrance
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.15, delayChildren: 0.2 }
+// 1. Keep these definitions OUTSIDE the component with the proper Types
+const containerVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { 
+      staggerChildren: 0.15, 
+      delayChildren: 0.2 
     }
-  };
+  }
+};
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
-  };
+const itemVariants: Variants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { 
+    opacity: 1, 
+    y: 0, 
+    transition: { 
+      duration: 0.6, 
+      ease: "easeOut" as const // Using 'as const' fixes the easing string error
+    } 
+  }
+};
+
+const Footer = () => {
+  // NOTE: I HAVE REMOVED THE DUPLICATE VARIANTS THAT WERE PREVIOUSLY HERE
 
   return (
     <footer className="relative bg-black pt-32 pb-12 px-6 md:px-12 lg:px-24 overflow-hidden">
       
-      {/* 1. THE WAVY RIPPLE EFFECT */}
-      {/* This container stays fixed, only the internal scaling/skewing creates the "warp" */}
-        {/* 1. THE FAST WAVY RIPPLE EFFECT */}
-<div className="absolute inset-0 w-full h-full pointer-events-none z-0">
-  <motion.div 
-    className="relative w-full h-full"
-    animate={{
-      // Increased skew for more visible "warping"
-      skewY: [0, 2, 0, -2, 0], 
-      skewX: [0, -1.5, 0, 1.5, 0],
-      scale: [1, 1.04, 1],
-    }}
-    transition={{
-      duration: 3, // Shorter duration = Faster movement
-      repeat: Infinity,
-      ease: "easeInOut"
-    }}
-  >
-    <Image 
-      src="/value_bg.svg" 
-      alt="" 
-      fill 
-      className="object-cover" 
-      priority
-    />
-  </motion.div>
-</div>
+      {/* 1. THE FAST WAVY RIPPLE EFFECT */}
+      <div className="absolute inset-0 w-full h-full pointer-events-none z-0">
+        <motion.div 
+          className="relative w-full h-full"
+          animate={{
+            skewY: [0, 2, 0, -2, 0], 
+            skewX: [0, -1.5, 0, 1.5, 0],
+            scale: [1, 1.04, 1],
+          }}
+          transition={{
+            duration: 3, 
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        >
+          <Image 
+            src="/value_bg.svg" 
+            alt="" 
+            fill 
+            className="object-cover" 
+            priority
+          />
+        </motion.div>
+      </div>
 
       {/* 2. Halftone Dot Background */}
       <div className="absolute top-0 left-0 w-[500px] h-[500px] pointer-events-none opacity-40 z-0 -translate-x-1/4 -translate-y-1/4">

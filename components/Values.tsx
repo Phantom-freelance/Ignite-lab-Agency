@@ -1,6 +1,5 @@
 "use client"
-
-import { motion } from "framer-motion"
+import { motion, Variants } from 'framer-motion';
 import Image from "next/image"
 
 export default function ValueProposition() {
@@ -11,8 +10,8 @@ export default function ValueProposition() {
     { title: "Transparent", subtitle: "Workflow" },
   ]
 
-  // Animation variants
-  const textContainerVariants = {
+  // 1. Unified and Typed Variants
+  const textContainerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -20,7 +19,7 @@ export default function ValueProposition() {
     },
   }
 
-  const textItemVariants = {
+  const textItemVariants: Variants = {
     hidden: { opacity: 0, x: 30 },
     visible: { 
       opacity: 1, 
@@ -63,7 +62,7 @@ export default function ValueProposition() {
         </motion.div>
       </div>
 
-      {/* ================= CENTER: UPLOADED CIRCLE (Plus Sign Removed) ================= */}
+      {/* ================= CENTER: UPLOADED CIRCLE ================= */}
       <div className="relative z-10 flex items-center justify-center">
         <motion.div 
           initial={{ scale: 0.7, opacity: 0, rotate: -90 }}
@@ -78,7 +77,6 @@ export default function ValueProposition() {
             className="object-contain opacity-60"
           />
           
-          {/* Subtle Radar Pulse Animation for the circle */}
           <motion.div 
             animate={{ scale: [1, 1.1], opacity: [0.3, 0] }}
             transition={{ duration: 4, repeat: Infinity, ease: "easeOut" }}

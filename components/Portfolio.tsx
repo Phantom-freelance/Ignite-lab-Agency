@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, Variants } from 'framer-motion';
 import Image from 'next/image';
 
 const PortfolioSection = () => {
@@ -15,12 +15,33 @@ const PortfolioSection = () => {
     { id: 5, category: 'Apps Design', title: 'Saas Web Development', conversion: '75% conversion rate', image: '/p-5.svg' },
   ];
 
-  const filteredItems = selectedTab === 'All' 
-    ? portfolioItems 
-    : portfolioItems.filter(item => item.category === selectedTab);
+  // COMBINED VARIANTS: This one contains both your logic and the correct Typescript "Variants" type
+  const cardVariants: Variants = {
+    hidden: { 
+      opacity: 0, 
+      y: 30, 
+      scale: 0.95 
+    },
+    visible: { 
+      opacity: 1, 
+      y: 0, 
+      scale: 1,
+      transition: { duration: 0.6, ease: [0.215, 0.61, 0.355, 1] } 
+    },
+    hover: {
+      y: -5,
+      transition: { duration: 0.3 }
+    },
+    // Adding these back in case you use them for other states
+    offscreen: { y: 50, opacity: 0 },
+    onscreen: {
+      y: 0,
+      opacity: 1,
+      transition: { type: "spring", bounce: 0.4, duration: 0.8 }
+    }
+  };
 
-  // Stagger container for initial load
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -28,27 +49,17 @@ const PortfolioSection = () => {
     }
   };
 
-  const cardVariants = {
-    hidden: { opacity: 0, y: 30, scale: 0.95 },
-    visible: { 
-      opacity: 1, 
-      y: 0, 
-      scale: 1,
-      transition: { duration: 0.6, ease: [0.215, 0.61, 0.355, 1] } 
-    }
-  };
+  const filteredItems = selectedTab === 'All' 
+    ? portfolioItems 
+    : portfolioItems.filter(item => item.category === selectedTab);
 
   return (
     <section className="relative min-h-screen bg-black text-white py-24 px-6 md:px-20 overflow-hidden">
-      
-      {/* Background Dot Pattern */}
       <div className="absolute top-0 left-0 w-[600px] h-[600px] opacity-20 pointer-events-none">
         <Image src="/dot-bg.png" alt="" fill className="object-contain" />
       </div>
 
       <div className="relative z-10 mx-auto">
-        
-        {/* Header & Tabs */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-20 gap-8">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -84,7 +95,6 @@ const PortfolioSection = () => {
           </div>
         </div>
 
-        {/* Portfolio Grid with Staggered Animation */}
         <motion.div 
           variants={containerVariants}
           initial="hidden"
@@ -106,7 +116,6 @@ const PortfolioSection = () => {
                   whileHover="hover"
                   className={`relative aspect-[4/3] rounded-[40px] overflow-hidden cursor-pointer group ${colSpan}`}
                 >
-                  {/* Card Image with Zoom Effect */}
                   <motion.div 
                     className="absolute inset-0"
                     variants={{ hover: { scale: 1.08 } }}
@@ -120,12 +129,6 @@ const PortfolioSection = () => {
                     />
                   </motion.div>
 
-                  {/* Hover Overlay Light/Glow */}
-                  <motion.div 
-                    className="absolute inset-0 bg-[#FFD700]/5 opacity-0 transition-opacity duration-300 group-hover:opacity-100" 
-                  />
-
-                  {/* Gradient Overlay & Content */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/100 via-black/40 to-transparent flex flex-col justify-end p-10">
                     <motion.div
                       variants={{ hover: { y: -5 } }}
@@ -146,74 +149,45 @@ const PortfolioSection = () => {
         </motion.div>
 
         {/* Animated Center Decoration */}
-<div className="flex items-center justify-center gap-1 w-full mt-24 relative">
-  
-  {/* Left Line - Animates from Right to Left */}
-  <motion.div 
-    initial={{ scaleX: 0, originX: 1 }}
-    whileInView={{ scaleX: 1 }}
-    transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1], delay: 0.4 }}
-    viewport={{ once: true }}
-    className="w-full h-[1.5px] bg-gradient-to-r from-transparent via-yellow-500/40 to-yellow-500/70"
-  />
+        <div className="flex items-center justify-center gap-1 w-full mt-24 relative">
+          <motion.div 
+            initial={{ scaleX: 0, originX: 1 }}
+            whileInView={{ scaleX: 1 }}
+            transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1], delay: 0.4 }}
+            viewport={{ once: true }}
+            className="w-full h-[1.5px] bg-gradient-to-r from-transparent via-yellow-500/40 to-yellow-500/70"
+          />
 
-  {/* Center Unit - Increased Size */}
-  <div className="relative flex items-center justify-center flex-shrink-0 mx-4">
-    
-    {/* 1. Static Shadow/Glow behind the dot */}
-    <div className="absolute w-8 h-8 bg-yellow-500/20 blur-lg rounded-full" />
+          <div className="relative flex items-center justify-center flex-shrink-0 mx-4">
+            <div className="absolute w-8 h-8 bg-yellow-500/20 blur-lg rounded-full" />
+            <motion.div 
+              animate={{ scale: [1, 2.2, 1], opacity: [0.6, 0, 0.6] }}
+              transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+              className="absolute w-4 h-4 border border-[#FFD700] rounded-full z-0"
+            />
+            <motion.div 
+              animate={{ scale: [1, 3], opacity: [0.8, 0] }}
+              transition={{ duration: 1.5, repeat: Infinity, ease: "easeOut", delay: 0.5 }}
+              className="absolute w-4 h-4 bg-[#FFD700]/30 rounded-full z-0"
+            />
+            <motion.div 
+              initial={{ scale: 0 }}
+              whileInView={{ scale: 1 }}
+              transition={{ type: "spring", stiffness: 200, damping: 15, delay: 0.2 }}
+              viewport={{ once: true }}
+              className="w-4 h-4 bg-[#FFD700] rounded-full z-10 shadow-[0_0_15px_rgba(255,215,0,0.6)]"
+            />
+          </div>
 
-    {/* 2. Outer Pulse Ring (Repeating) */}
-    <motion.div 
-      animate={{ 
-        scale: [1, 2.2, 1],
-        opacity: [0.6, 0, 0.6] 
-      }}
-      transition={{ 
-        duration: 2.5, 
-        repeat: Infinity, 
-        ease: "easeInOut" 
-      }}
-      className="absolute w-4 h-4 border border-[#FFD700] rounded-full z-0"
-    />
-
-    {/* 3. The "Ping" Effect (Single expanding wave) */}
-    <motion.div 
-      animate={{ 
-        scale: [1, 3],
-        opacity: [0.8, 0] 
-      }}
-      transition={{ 
-        duration: 1.5, 
-        repeat: Infinity, 
-        ease: "easeOut",
-        delay: 0.5
-      }}
-      className="absolute w-4 h-4 bg-[#FFD700]/30 rounded-full z-0"
-    />
-
-    {/* 4. MAIN CENTER DOT (Increased to w-4 h-4) */}
-    <motion.div 
-      initial={{ scale: 0 }}
-      whileInView={{ scale: 1 }}
-      transition={{ type: "spring", stiffness: 200, damping: 15, delay: 0.2 }}
-      viewport={{ once: true }}
-      className="w-4 h-4 bg-[#FFD700] rounded-full z-10 shadow-[0_0_15px_rgba(255,215,0,0.6)]"
-    />
-  </div>
-
-  {/* Right Line - Animates from Left to Right */}
-  <motion.div 
-    initial={{ scaleX: 0, originX: 0 }}
-    whileInView={{ scaleX: 1 }}
-    transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1], delay: 0.4 }}
-    viewport={{ once: true }}
-    className="w-full h-[1.5px] bg-gradient-to-l from-transparent via-yellow-500/40 to-yellow-500/70"
-  />
-</div>
+          <motion.div 
+            initial={{ scaleX: 0, originX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1], delay: 0.4 }}
+            viewport={{ once: true }}
+            className="w-full h-[1.5px] bg-gradient-to-l from-transparent via-yellow-500/40 to-yellow-500/70"
+          />
+        </div>
       </div>
-
-      
     </section>
   );
 };
