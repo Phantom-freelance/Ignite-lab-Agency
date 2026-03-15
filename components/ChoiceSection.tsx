@@ -25,7 +25,7 @@ export default function CompanySection() {
                 Be seen as the
               </h3>
               <h2 
-                className="text-[60px] md:text-[120px] font-black leading-[0.85] tracking-tighter"
+                className="text-5xl md:text-8xl font-bold mb-6 text-transparent leading-[1.1]"
                 style={{ 
                   WebkitTextStroke: "1.5px black", 
                   color: "transparent" 

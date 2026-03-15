@@ -32,7 +32,7 @@ const WhyChooseUs = () => {
         <div className="mb-16">
           <p className="text-[#FFD700] uppercase tracking-[0.4em] text-xs font-bold mb-4">Secure Process</p>
           <h2 
-            className="text-6xl md:text-9xl font-black tracking-tighter text-transparent leading-[0.8]"
+            className="text-6xl md:text-8xl font-black tracking-tighter text-transparent leading-[0.8]"
             style={{ WebkitTextStroke: '1.5px #FFD700' }}
           >
             Why Choose Us?

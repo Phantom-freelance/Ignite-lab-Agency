@@ -49,10 +49,10 @@ export default function ValueProposition() {
           initial={{ opacity: 0, rotate: -15, scale: 0.8 }}
           animate={{ opacity: 1, rotate: 0, scale: 1 }}
           transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
-          className="relative w-[320px] h-[520px] md:w-[480px] md:h-[780px] lg:w-[550px] lg:h-[850px]"
+          className="relative w-[320px] h-[520px] md:w-[480px] md:h-[580px] lg:w-[550px] lg:h-[550px]"
         >
           <Image
-            style={{ top: `40px`, left: '-50px'}} 
+            style={{ top: `40px`, left: '-30%'}} 
             src="/valuePropoition.svg" 
             alt="Value Proposition Arc"
             fill
@@ -68,7 +68,7 @@ export default function ValueProposition() {
           initial={{ scale: 0.7, opacity: 0, rotate: -90 }}
           animate={{ scale: 1, opacity: 1, rotate: 0 }}
           transition={{ duration: 1.8, ease: [0.16, 1, 0.3, 1] }}
-          className="relative w-[350px] h-[350px] md:w-[450px] md:h-[450px] lg:w-[500px] lg:h-[500px]"
+          className="relative w-[300px] h-[300px] md:w-[330px] md:h-[330px] lg:w-[350px] lg:h-[350px]"
         >
           <Image
             src="/value-circle.svg"
@@ -102,7 +102,7 @@ export default function ValueProposition() {
             <span className="text-yellow-500 text-[10px] md:text-xs font-bold uppercase tracking-[0.6em] mb-2 opacity-60 group-hover:opacity-100 transition-all duration-300">
               {step.title}
             </span>
-            <h2 className="text-4xl md:text-6xl lg:text-8xl font-black text-white uppercase leading-none tracking-tighter transition-all duration-500 group-hover:translate-x-4 group-hover:text-yellow-500/20">
+            <h2 className="text-4xl md:text-5xl lg:text-5xl font-bold text-white uppercase leading-none tracking-tighter transition-all duration-500 group-hover:translate-x-4 group-hover:text-yellow-500/20">
               {step.subtitle}
             </h2>
           </motion.div>

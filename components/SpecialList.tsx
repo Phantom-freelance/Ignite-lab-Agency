@@ -98,9 +98,7 @@ const SpecialistsSection = () => {
           >
             Work Only with Specialists
           </h2>
-          <p className="text-2xl md:text-3xl font-regular leading-tight ">
-            You would never go to your GP for heart surgery... We&apos;re true web purists. Everything from simple websites to full business operational solutions.
-          </p>
+          <p className="text-2xl md:text-3xl font-regular leading-tight ">You would never go to your GP for heart surgery. So why would you get your most important online assets, your website, developed by a generalist "full service" marketing, SEO or creative agency? We've handpicked our web design Melbourne family to be top-notch web designers, web developers, conversion specialists, business analysts, API integrators, project managers and digital strategists - we're true web purists. Everything from simple websites to full business operational solutions.</p>
         </motion.div>
 
         {/* Grid Container */}

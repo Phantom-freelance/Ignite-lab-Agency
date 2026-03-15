@@ -16,9 +16,9 @@ export default function Hero() {
       <div className="absolute inset-0 bg-black/70"></div>
 
       {/* Main Content Area */}
-      <div className="relative z-10 mx-auto px-6 md:px-12 h-full flex flex-col justify-center">
+      <div className="relative z-10 mx-auto px-6 pt-30 md:px-12 h-full flex flex-col justify-center">
         {/* Description */}
-        <h3 className="text-2xl md:text-5xl lg:text-6xl font-light leading-tight max-w-2xl font-poppins pt-30">
+        <h3 className="text-2xl md:text-5xl lg:text-5xl font-light leading-tight max-w-2xl font-poppins pt-30">
           We unite top freelancers under one roof — flexible, fast, escrow-protected.
         </h3>
 
@@ -34,10 +34,10 @@ export default function Hero() {
 
         {/* Headlines */}
         <div className="mt-16 md:mt-16 lg:mt-16">
-          <h2 className="text-[24px] md:text-[50px] lg:text-[70px] tracking-[0.2em] text-white font-medium uppercase">
+          <h2 className="text-[24px] md:text-[50px] lg:text-[50px] tracking-[0.2em] text-white font-medium uppercase">
             Your On-Demand
           </h2>
-          <h1 className="text-[50px] sm:text-[80px] md:text-[120px] lg:text-[160px] xl:text-[220px] font-bold text-yellow-400 leading-[0.8] tracking-tighter uppercase">
+          <h1 className="text-[50px] sm:text-[80px] md:text-[120px] lg:text-[160px] xl:text-[190px] font-bold text-yellow-400 leading-[0.8] tracking-tighter uppercase">
             Freelancer
           </h1>
         </div>
@@ -45,10 +45,10 @@ export default function Hero() {
 
       {/* AGENCY TEXT: Positioned to the far right, reading bottom-to-top */}
       <div className="hidden lg:flex absolute top-0 h-full items-center pointer-events-none z-20"
-        style={{ right:"-200px"}}
+        style={{ right:"-150px"}}
       >
         <h2 
-          className="font-black uppercase select-none lg:text-[150px] xl:text-[200px] leading-none"
+          className="font-black uppercase select-none lg:text-[150px] xl:text-[180px] leading-none"
           style={{ 
             WebkitTextStroke: "2px #FFC700", 
             color: "transparent",

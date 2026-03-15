@@ -44,7 +44,7 @@ const FAQSection = () => {
         <motion.h2 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          className="text-5xl md:text-8xl lg:text-9xl font-black tracking-tighter text-transparent leading-[0.85] w-full"
+          className="text-5xl md:text-6xl lg:text-8xl font-black tracking-tighter text-transparent leading-[0.85] w-full"
           style={{ WebkitTextStroke: '1.5px black' }}
         >
           Frequently Asked Questions
