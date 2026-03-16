@@ -36,6 +36,14 @@ const blogPosts = [
     author: "Bilal Tyson",
     readTime: "13min read",
     image: "/blog-4.svg"
+  },
+  {
+    category: "AI & AUTOMATION",
+    title: "How to Use AI to Personalize Your Customer's Web Journey",
+    excerpt: "Generic websites are dying. Learn how to integrate AI to serve dynamic content that changes based on who is clicking.",
+    author: "Bilal Tyson",
+    readTime: "11min read",
+    image: "/blog-5.svg"
   }
 ];
 
@@ -43,7 +51,7 @@ const BlogSection = () => {
   return (
     <section className="relative bg-black py-24 overflow-hidden">
       
-      {/* Background Shape Image at the bottom */}
+      {/* Background Shape Image */}
       <div className="absolute left-0 bottom-0 w-full h-[40%] pointer-events-none z-0">
         <Image 
           src="/blog-bg.png" 
@@ -59,10 +67,10 @@ const BlogSection = () => {
           <div>
             <p className="text-white text-sm font-bold uppercase tracking-widest mb-4">Our Blog</p>
             <h2 
-              className="text-8xl md:text-7xl font-black tracking-tighter text-transparent leading-none"
+              className="text-6xl md:text-7xl font-black tracking-tighter text-transparent leading-none"
               style={{ WebkitTextStroke: '1.5px #FFC700' }}
             >
-              Latest insights  & inspiration
+              Latest insights & inspiration
             </h2>
           </div>
           <motion.button 
@@ -73,11 +81,11 @@ const BlogSection = () => {
           </motion.button>
         </div>
 
-        {/* TWO-ROW GRID SYSTEM */}
-        <div className="flex flex-col gap-20">
+        {/* GRID SYSTEM */}
+        <div className="flex flex-col gap-10 md:gap-20">
           
-          {/* ROW 1: Two Large Posts */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
+          {/* ROW 1: The first 2 items (Large Horizontal Cards) */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-20">
             {blogPosts.slice(0, 2).map((post, index) => (
               <motion.div 
                 key={index}
@@ -98,32 +106,35 @@ const BlogSection = () => {
                     {post.author} • {post.readTime}
                   </div>
                 </div>
-                <div className="relative w-full md:w-1/3 min-h-[250px] overflow-hidden">
+                <div className="relative w-full md:w-1/3 min-h-[200px] md:min-h-full overflow-hidden">
                   <Image src={post.image} alt="Blog" fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
                 </div>
               </motion.div>
             ))}
           </div>
 
-          {/* ROW 2: Two Posts + Subscribe Card */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-20">
-            {blogPosts.slice(2, 4).map((post, index) => (
+          {/* ROW 2: The remaining 3 items (Vertical Cards in a 3-column row) */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-20">
+            {blogPosts.slice(2, 5).map((post, index) => (
               <motion.div 
                 key={index}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 + (index * 0.1) }}
-                className="group cursor-pointer bg-[#0A0A0A] border border-zinc-800 rounded-[2.5rem] overflow-hidden flex flex-col shadow-2xl"
+                className="group cursor-pointer bg-[#0A0A0A] border border-zinc-800 rounded-[2.5rem] overflow-hidden flex flex-col shadow-2xl h-full"
               >
                 <div className="relative h-56 w-full overflow-hidden">
                   <Image src={post.image} alt="Blog" fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
                 </div>
-                <div className="p-8">
-                  <span className="text-[#FFC700] text-xs font-bold tracking-widest">{post.category}</span>
-                  <h3 className="text-white text-xl font-bold mt-4 mb-3 group-hover:text-[#FFC700] transition-colors line-clamp-2">
-                    {post.title}
-                  </h3>
-                  <div className="flex items-center gap-2 text-zinc-500 text-[10px] font-bold uppercase tracking-widest mt-4">
+                <div className="p-8 flex flex-col flex-1 justify-between">
+                  <div>
+                    <span className="text-[#FFC700] text-xs font-bold tracking-widest">{post.category}</span>
+                    <h3 className="text-white text-xl font-bold mt-4 mb-3 group-hover:text-[#FFC700] transition-colors line-clamp-2">
+                      {post.title}
+                    </h3>
+                    <p className="text-zinc-500 text-sm line-clamp-2 mb-4">{post.excerpt}</p>
+                  </div>
+                  <div className="flex items-center gap-2 text-zinc-500 text-[10px] font-bold uppercase tracking-widest mt-auto">
                     <span>{post.author}</span>
                     <span className="w-1 h-1 bg-zinc-700 rounded-full" />
                     <span>{post.readTime}</span>
@@ -131,33 +142,6 @@ const BlogSection = () => {
                 </div>
               </motion.div>
             ))}
-
-            {/* Subscribe Card with Added Shadow for Visibility */}
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.4 }}
-              className="bg-[#FFC700] rounded-[2.5rem] p-8 flex flex-col justify-center text-black shadow-[0_20px_50px_rgba(0,0,0,0.2)] border border-black/5"
-            >
-              <div className="bg-black w-10 h-10 rounded-xl flex items-center justify-center mb-6 shadow-lg">
-                <svg className="w-5 h-5 text-[#FFC700]" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
-                  <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
-                </svg>
-              </div>
-              <h3 className="text-2xl font-black mb-2 uppercase leading-tight">Subscribe to our blog</h3>
-              <p className="text-black/70 text-sm font-medium mb-6">Get the latest posts in your email</p>
-              <div className="space-y-3">
-                <input 
-                  type="email" 
-                  placeholder="Enter your email address" 
-                  className="w-full bg-white rounded-full px-6 py-3.5 outline-none placeholder:text-zinc-400 text-sm shadow-inner"
-                />
-                <button className="w-full bg-black text-[#FFC700] rounded-full py-3.5 font-black uppercase tracking-widest text-xs hover:bg-zinc-900 transition-all active:scale-95 shadow-lg">
-                  Subscribe
-                </button>
-              </div>
-            </motion.div>
           </div>
         </div>
 
@@ -165,13 +149,13 @@ const BlogSection = () => {
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-20 relative z-20">
           <motion.button 
             whileHover={{ scale: 1.05, y: -5 }}
-            className="bg-white text-black px-12 py-5 rounded-full font-black uppercase tracking-widest text-sm shadow-2xl border border-transparent hover:border-black/10 transition-all"
+            className="bg-white text-black px-12 py-5 rounded-full font-black uppercase tracking-widest text-sm shadow-2xl border border-transparent hover:border-black/10 transition-all w-full sm:w-auto text-center"
           >
             Start your project
           </motion.button>
           <motion.button 
             whileHover={{ scale: 1.05, y: -5 }}
-            className="bg-black text-white px-12 py-5 rounded-full font-black uppercase tracking-widest text-sm shadow-2xl transition-all"
+            className="bg-black text-white px-12 py-5 rounded-full font-black uppercase tracking-widest text-sm shadow-2xl transition-all border border-zinc-800 w-full sm:w-auto text-center"
           >
             Apply as a freelancer
           </motion.button>

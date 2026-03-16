@@ -62,8 +62,8 @@ const FAQSection = () => {
             className="relative w-full aspect-square scale-125"
           >
             <Image 
-              src="/QuestionMark.svg" 
-              alt="Decoration"
+              src="/questionMark.svg" 
+              alt="FAQs"
               fill
               className="object-contain object-left"
               priority
