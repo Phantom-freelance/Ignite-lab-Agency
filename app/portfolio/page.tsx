@@ -2,14 +2,12 @@
 
 import React from 'react';
 import Navbar from '@/components/Navbar';
-import FAQ from '@/components/Faqs'; 
 import Footer from '@/components/Footer';
-import Escrow from '@/components/Escrow'; 
-import AboutUsHero from '@/components/aboutUsHero';
+import PortfolioHero from '@/components/PortfolioHero';
 import RequestForm from '@/components/RequestForm';
-import CeoMsg from '@/components/CeoMsg';
-import WhoWeAre from '@/components/WhoWeAre';
-
+import SelectedWork from '@/components/SelectedWork';
+import TopSelections from '@/components/TopSelections';
+import Portfolio from '@/components/Portfolio';
 
 export default function AboutUs() {
   return (
@@ -20,11 +18,10 @@ export default function AboutUs() {
 
       {/* 2. Main Content Area */}
       <div className="flex-1 w-full">
-        <AboutUsHero/>
-        <CeoMsg/>
-        <WhoWeAre/>
-        <Escrow />
-        <FAQ />
+        <PortfolioHero/>
+        <SelectedWork/>
+        <TopSelections/>
+        <Portfolio/>
         <RequestForm/>
         
        

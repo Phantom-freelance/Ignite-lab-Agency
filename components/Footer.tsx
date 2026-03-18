@@ -4,21 +4,19 @@ import React from 'react';
 import { motion, Variants } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
-// Combined all Lucide icons into one line
-import { Linkedin, Facebook, Instagram, Phone, Mail } from 'lucide-react';
+// Added MessageCircle (WhatsApp) and Ghost (Snapchat)
+import { 
+  Linkedin, Facebook, Instagram, Phone, Mail, 
+  Youtube, Twitter, Music2, MessageCircle, Ghost 
+} from 'lucide-react';
 
-// Create a motion-enabled Link for smooth animations without errors
 const MotionLink = motion(Link);
 
-// 1. Animation Variants
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { 
-      staggerChildren: 0.15, 
-      delayChildren: 0.2 
-    }
+    transition: { staggerChildren: 0.15, delayChildren: 0.2 }
   }
 };
 
@@ -27,55 +25,39 @@ const itemVariants: Variants = {
   visible: { 
     opacity: 1, 
     y: 0, 
-    transition: { 
-      duration: 0.6, 
-      ease: "easeOut"
-    } 
+    transition: { duration: 0.6, ease: "easeOut" } 
   }
 };
 
 const Footer = () => {
-  // Social Data
   const socials = [
     { name: 'linkedin', icon: <Linkedin size={18} />, href: '#' },
     { name: 'facebook', icon: <Facebook size={18} />, href: '#' },
     { name: 'instagram', icon: <Instagram size={18} />, href: '#' },
+    { name: 'youtube', icon: <Youtube size={18} />, href: '#' },
+    { name: 'twitter', icon: <Twitter size={18} />, href: '#' },
+    { name: 'tiktok', icon: <Music2 size={18} />, href: '#' },
+    { name: 'whatsapp', icon: <MessageCircle size={18} />, href: '#' },
+    { name: 'snapchat', icon: <Ghost size={18} />, href: '#' },
   ];
 
   return (
     <footer className="relative bg-black pt-32 pb-12 px-6 md:px-12 lg:px-24 overflow-hidden">
-      
-      {/* BACKGROUND LAYER 1: WAVY RIPPLE */}
+      {/* BACKGROUND LAYERS */}
       <div className="absolute inset-0 w-full h-full pointer-events-none z-0">
         <motion.div 
           className="relative w-full h-full"
-          animate={{
-            skewY: [0, 2, 0, -2, 0], 
-            skewX: [0, -1.5, 0, 1.5, 0],
-            scale: [1, 1.04, 1],
-          }}
-          transition={{
-            duration: 3, 
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
+          animate={{ skewY: [0, 2, 0, -2, 0], skewX: [0, -1.5, 0, 1.5, 0], scale: [1, 1.04, 1] }}
+          transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
         >
-          <Image 
-            src="/value_bg.svg" 
-            alt="" 
-            fill 
-            className="object-cover" 
-            priority
-          />
+          <Image src="/value_bg.svg" alt="" fill className="object-cover" priority />
         </motion.div>
       </div>
 
-      {/* BACKGROUND LAYER 2: GIANT "AGENCY" TEXT */}
       <div className="absolute bottom-0 left-0 w-full overflow-hidden pointer-events-none z-0 translate-y-1/4">
         <motion.h2 
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 0.12 }}
-          transition={{ duration: 1.5 }}
           className="text-[25vw] font-black text-transparent leading-none text-center select-none tracking-tighter"
           style={{ WebkitTextStroke: '2px #FFC700' }}
         >
@@ -83,7 +65,6 @@ const Footer = () => {
         </motion.h2>
       </div>
 
-      {/* MAIN CONTENT */}
       <motion.div 
         variants={containerVariants}
         initial="hidden"
@@ -97,18 +78,14 @@ const Footer = () => {
             BBR <span className="text-[#FFC700]">Agency</span>
           </h3>
           <div className="text-zinc-400 space-y-4 text-lg font-medium leading-relaxed">
-            <p>Business locations/support centre in 5 Locations</p>
+            
             <p className="flex items-center gap-3 mt-6 text-white font-bold">
               <b className="text-[#FFC700] text-xl">Head office: </b> Australia
             </p>
-            
-            {/* Phone Section Fixed */}
             <p className="flex items-center gap-3 text-white font-bold group">
               <Phone size={22} className="text-[#FFC700] shrink-0 transition-transform group-hover:scale-110" />
               <span>+1 206-214-2298</span>
             </p>
-
-            {/* Email Section Fixed */}
             <p className="flex items-center gap-3 text-white font-bold group">
               <Mail size={22} className="text-[#FFC700] shrink-0 transition-transform group-hover:scale-110" />
               <span>support@bbragency.com</span>
@@ -116,17 +93,11 @@ const Footer = () => {
           </div>
         </motion.div>
 
-        {/* Column 2: Quick Links - UPDATED TO REMOVE WARNINGS */}
+        {/* Column 2: Quick Links */}
         <motion.div variants={itemVariants}>
           <h4 className="text-white font-black text-xl mb-10 uppercase tracking-widest">Quick Links</h4>
           <ul className="space-y-4">
-            {[
-              { name: 'Home', path: '/' },
-              { name: 'About', path: '/about' },
-              { name: 'Listings', path: '/listings' },
-              { name: 'Services', path: '/services' },
-              { name: 'Blogs', path: '/blogs' },
-            ].map((link) => (
+            {[{ name: 'Home', path: '/' }, { name: 'About', path: '/about' }, { name: 'Listings', path: '/listings' }, { name: 'Services', path: '/services' }, { name: 'Blogs', path: '/blogs' }].map((link) => (
               <li key={link.name}>
                 <MotionLink 
                   href={link.path}
@@ -140,17 +111,13 @@ const Footer = () => {
           </ul>
         </motion.div>
 
-        {/* Column 3: Offices */}
+        {/* Column 3: Associated Offices */}
         <motion.div variants={itemVariants}>
-          <h4 className="text-white font-black text-xl mb-10 uppercase tracking-widest">Associated office</h4>
+          <h4 className="text-white font-black text-xl mb-10 uppercase tracking-widest">Services</h4>
           <ul className="space-y-4">
-            {['New Zealand', 'Canada', 'Malaysia', 'India'].map((item) => (
+            {['Website Design', 'CRO Strategies', 'Digital Consultancy', 'API Integration'].map((item) => (
               <li key={item}>
-                <motion.a 
-                  href="#" 
-                  whileHover={{ x: 10, color: '#FFC700' }}
-                  className="text-zinc-400 hover:text-[#FFC700] transition-colors text-lg font-bold inline-block"
-                >
+                <motion.a href="#" whileHover={{ x: 10, color: '#FFC700' }} className="text-zinc-400 hover:text-[#FFC700] transition-colors text-lg font-bold inline-block">
                   {item}
                 </motion.a>
               </li>
@@ -162,11 +129,7 @@ const Footer = () => {
         <motion.div variants={itemVariants} className="space-y-8">
           <h4 className="text-white font-black text-xl uppercase tracking-widest">Subscribe!</h4>
           <div className="relative group max-w-sm">
-            <input 
-              type="email" 
-              placeholder="Email Address" 
-              className="w-full bg-white rounded-full py-4 px-8 text-black text-base font-bold outline-none"
-            />
+            <input type="email" placeholder="Email Address" className="w-full bg-white rounded-full py-4 px-8 text-black text-base font-bold outline-none" />
             <button className="absolute right-2 top-2 bg-[#FFC700] hover:bg-black group w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="black" strokeWidth="3" className="group-hover:stroke-[#FFC700]">
                 <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -177,13 +140,14 @@ const Footer = () => {
           
           <div className="pt-6">
             <p className="text-zinc-500 text-sm font-black uppercase tracking-[0.3em] mb-6">Follow Us</p>
-            <div className="flex gap-4">
+            {/* Added flex-wrap and max-w-xs to manage 8 icons on mobile */}
+            <div className="flex flex-wrap gap-3 max-w-xs">
               {socials.map((social) => (
                 <motion.a 
                   key={social.name}
                   href={social.href} 
                   whileHover={{ scale: 1.1, backgroundColor: '#FFC700', color: '#000' }}
-                  className="w-12 h-12 border border-zinc-800 rounded-full flex items-center justify-center text-white transition-all shadow-lg"
+                  className="w-11 h-11 border border-zinc-800 rounded-full flex items-center justify-center text-white transition-all shadow-lg"
                 >
                   {social.icon}
                 </motion.a>
@@ -193,7 +157,6 @@ const Footer = () => {
         </motion.div>
       </motion.div>
 
-      {/* 3. Copyright Bar */}
       <motion.div 
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}

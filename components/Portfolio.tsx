@@ -78,7 +78,7 @@ const PortfolioSection = () => {
               <button
                 key={tab}
                 onClick={() => setSelectedTab(tab)}
-                className={`relative px-8 py-3 rounded-full text-lg font-bold transition-all duration-300 z-10 ${
+                className={`relative px-6 py-3 rounded-full lg:text-lg sm:text-sm font-regular transition-all duration-300 z-10 ${
                   selectedTab === tab ? "text-black" : "text-white hover:text-white/70"
                 }`}
               >

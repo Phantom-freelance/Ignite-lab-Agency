@@ -8,7 +8,7 @@ export default function CompanySection() {
 
   return (
     <section className="relative w-full bg-b-y overflow-hidden">
-      
+      <div className="hidden lg:block">
       {/* ================= YELLOW TOP SECTION ================= */}
       <div className="relative bg-[#FFC700] pt-16 pb-20 md:pt-24 md:pb-20">
         {/* Dotted background overlay */}
@@ -36,13 +36,37 @@ export default function CompanySection() {
             </motion.div>
 
             <div className="flex gap-4 pt-4">
-              <button className="bg-white text-black px-6 py-3 md:px-8 md:py-4 rounded-full font-bold text-sm md:text-base shadow-sm">
-                Start your project
-              </button>
-              <button className="bg-black text-white px-6 py-3 md:px-8 md:py-4 rounded-full font-bold text-sm md:text-base">
-                Apply as a freelancer
-              </button>
-            </div>
+  {/* WHITE BUTTON -> Turns Black on Hover */}
+  <button className="
+    bg-white text-black 
+    px-6 py-3 md:px-8 md:py-4 
+    rounded-full font-bold text-sm md:text-base 
+    border border-white cursor-pointer
+    /* HOVER: Turn Black with White Text */
+    hover:bg-black hover:text-white 
+    /* ACTIVE: Shrink and slightly dim */
+    active:scale-95 active:opacity-90 
+    /* Transition makes the color swap smooth */
+    transition-all duration-300"
+  >
+    Start your project
+  </button>
+
+  {/* BLACK BUTTON -> Turns White on Hover */}
+  <button className="
+    bg-black text-white 
+    px-6 py-3 md:px-8 md:py-4 
+    rounded-full font-bold text-sm md:text-base
+    border border-white/20 cursor-pointer
+    /* HOVER: Turn White with Black Text */
+    hover:bg-white hover:text-black 
+    /* ACTIVE: Shrink */
+    active:scale-95 
+    transition-all duration-300"
+  >
+    Apply as a freelancer
+  </button>
+</div>
           </div>
         </div>
       </div>
@@ -55,7 +79,7 @@ export default function CompanySection() {
               <motion.div 
                 initial={{ scale: 0.9, opacity: 0 }}
                 whileInView={{ scale: 1, opacity: 1 }}
-                className="w-64 h-64 md:w-[480px] md:h-[480px] rounded-full border-[10px] md:border-[15px] border-zinc-300 overflow-hidden relative"
+                className="max-w-full md:max-w-[24rem] md:max-h-[24rem] rounded-full border-[10px] md:border-[15px] border-zinc-300 overflow-hidden relative"
               >
                 <img
                   src="/person-1.png" 
@@ -212,7 +236,127 @@ With a dedicated team of 15+ full-time experts, a strong Melbourne presence an
     className="w-full h-[1.5px] bg-gradient-to-l from-transparent via-yellow-500/40 to-yellow-500/70"
   />
 </div>
+</div>
+   
+      <div className="block lg:hidden">
+      {/* ================= YELLOW TOP SECTION ================= */}
+      <div className="relative bg-[#FFC700] pt-16 pb-32">
+        {/* Dotted background overlay */}
+        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#000_1.5px,transparent_1.5px)] [background-size:20px_20px]" />
+
+        <div className="mx-auto px-6 relative z-10 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            className="mb-8"
+          >
+            <h3 className="text-xl font-bold text-black tracking-tight mb-1">
+              Be seen as the
+            </h3>
+            <h2 
+              className="text-5xl font-black uppercase leading-[1]"
+              style={{ 
+                WebkitTextStroke: "1px black", 
+                color: "transparent" 
+              }}
+            >
+              Obvious <br/> 1st Choice
+            </h2>
+          </motion.div>
+
+          {/* Buttons - Stacked for Mobile */}
+          <div className="flex flex-col gap-4 max-w-xs mx-auto">
+            <button className="bg-white text-black px-8 py-4 rounded-full font-extrabold text-sm shadow-lg active:scale-95 transition-transform">
+              Start your project
+            </button>
+            <button className="bg-black text-white px-8 py-4 rounded-full font-extrabold text-sm active:scale-95 transition-transform">
+              Apply as a freelancer
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* ================= BLACK BOTTOM SECTION ================= */}
+      <div className="relative bg-black text-white px-6  pt-30">
+        
+        {/* THE CIRCLE IMAGE - Overlapping the Yellow/Black line */}
+        <div className="relative flex justify-center -mt-24 mb-12 z-20">
+          <motion.div 
+            initial={{ scale: 0.8, opacity: 0 }}
+            whileInView={{ scale: 1, opacity: 1 }}
+            className="w-64 h-64 rounded-full border-8 border-black overflow-hidden relative shadow-2xl"
+          >
+            <img
+              src="/person-1.png" // Ensure this is in your public folder
+              alt="Team member"
+              className="w-full h-full object-cover"
+            />
+            
+            {/* Play Button Overlay */}
+            <button
+              onClick={() => setOpen(true)}
+              className="absolute inset-0 flex items-center justify-center group"
+            >
+              <div className="bg-[#FFC700] w-16 h-16 rounded-full flex items-center justify-center shadow-xl transition-transform active:scale-90">
+                 <div className="w-0 h-0 border-t-[10px] border-t-transparent border-l-[18px] border-l-black border-b-[10px] border-b-transparent ml-1" />
+              </div>
+            </button>
+          </motion.div>
+        </div>
+
+        {/* TEXT CONTENT */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          className="max-w-md mx-auto"
+        >
+          <div className="space-y-8 text-[16px] text-zinc-100 leading-relaxed font-medium">
+            <p>
+              Web design is more than just looking good! We create highly engaging custom websites that make your phone ring. After all, your website is your ultimate sales tool & best credibility check for confidence. Flexing our 3 key muscles of web design, web development and conversion experience, our Melbourne UI/UX specialists blend human behaviour “pre-suasion” psychology with technology to visually communicate your true value.
+<br/><br/>
+With a dedicated team of 15+ full-time experts, a strong Melbourne presence and 15+ years of insights, we’re honoured to have received 151+ 5 star Google reviews and 80+ awards & recognitions since 2009. This gives our clients specialist digital knowledge and a conversion framework that significantly reduces their marketing wastage and maximises their online web design & development engagement results.</p>
+          </div>
+        </motion.div>
+
+        {/* Decorative Animated Line Component */}
+        <div className="flex items-center justify-center gap-1 w-full mt-20 relative opacity-40">
+            <motion.div 
+                initial={{ scaleX: 0, originX: 1 }}
+                whileInView={{ scaleX: 1 }}
+                className="w-full h-[1px] bg-yellow-500"
+            />
+            <div className="w-2 h-2 bg-yellow-500 rounded-full flex-shrink-0 mx-2" />
+            <motion.div 
+                initial={{ scaleX: 0, originX: 0 }}
+                whileInView={{ scaleX: 1 }}
+                className="w-full h-[1px] bg-yellow-500"
+            />
+        </div>
+      </div>
+
+      {/* VIDEO MODAL */}
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+            onClick={() => setOpen(false)}
+            className="fixed inset-0 bg-black/95 flex items-center justify-center z-[100] p-4"
+          >
+            <div className="max-w-full max-w-4xl aspect-video bg-zinc-900 rounded-2xl overflow-hidden shadow-2xl">
+               <iframe 
+                  className="w-full h-full"
+                  src="https://www.youtube.com/embed/your-video-id" 
+                  title="YouTube video player" 
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                  allowFullScreen
+               ></iframe>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+      </div>
     </section>
     
   )
 }
+

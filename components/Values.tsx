@@ -29,7 +29,8 @@ export default function ValueProposition() {
   }
 
   return (
-    <section className="relative w-full h-screen bg-black text-white overflow-hidden flex items-center justify-center font-sans">
+    <section className="relative   bg-black text-white overflow-hidden flex items-center justify-center font-sans">
+      <div className='hidden lg:block w-full h-screen'>
       
       {/* ================= BACKGROUND WAVE ================= */}
       <motion.div 
@@ -63,7 +64,7 @@ export default function ValueProposition() {
       </div>
 
       {/* ================= CENTER: UPLOADED CIRCLE ================= */}
-      <div className="relative z-10 flex items-center justify-center">
+      <div className="relative z-10 flex items-center h-full justify-center">
         <motion.div 
           initial={{ scale: 0.7, opacity: 0, rotate: -90 }}
           animate={{ scale: 1, opacity: 1, rotate: 0 }}
@@ -108,7 +109,62 @@ export default function ValueProposition() {
           </motion.div>
         ))}
       </motion.div>
+</div>
+      <div className="block lg:hidden bg-black pb-30 px-6 overflow-hidden">
+  {/* TOP VISUAL: ARC + CIRCLE */}
+  <div className="relative flex justify-center items-center ">
+    {/* ARC IMAGE */}
+    <div className="absolute w-[320px] h-[320px] opacity-80 hidden">
+      <img src="/valuePropoition-mbl.svg" className="w-full h-full object-contain rotate-[-10deg]" alt="Arc" />
+    </div>
+    
+    {/* ================= CENTER: UPLOADED CIRCLE ================= */}
+      <div className="relative z-10 flex items-center h-full justify-center">
+        <motion.div 
+          initial={{ scale: 0.7, opacity: 0, rotate: -90 }}
+          animate={{ scale: 1, opacity: 1, rotate: 0 }}
+          transition={{ duration: 1.8, ease: [0.16, 1, 0.3, 1] }}
+          className="relative w-[300px] h-[300px] md:w-[330px] md:h-[330px] lg:w-[350px] lg:h-[350px]"
+        >
+          <Image
+            src="/value-circle-mbl.svg"
+            alt="Center Circle"
+            fill
+            className="object-contain opacity-60"
+          />
+          
+          <motion.div 
+            animate={{ scale: [1, 1.1], opacity: [0.3, 0] }}
+            transition={{ duration: 4, repeat: Infinity, ease: "easeOut" }}
+            className="absolute inset-0 rounded-full border border-yellow-500/20"
+          />
+        </motion.div>
+      </div>
+  </div>
+
+  {/* VERTICAL STEPS LIST */}
+  <div className="flex flex-col items-center gap-16 text-center">
+    {[
+      { t: "Escrow", s: "Secured" },
+      { t: "Verified", s: "Freelancers" },
+      { t: "Fast", s: "Turnaround" },
+      { t: "Transparent", s: "Workflow" }
+    ].map((step, i) => (
+      <div key={i} className="group">
+        <span className="text-yellow-500 text-[20px] uppercase tracking-[0.5em] font-bold block mb-3 opacity-70">
+          {step.t}
+        </span>
+        <h2 className="text-4xl md:text-5xl font-bold text-white uppercase tracking-tighter">
+          {step.s}
+        </h2>
+      </div>
+    ))}
+  </div>
+</div>
 
     </section>
+
+    
   )
 }
+

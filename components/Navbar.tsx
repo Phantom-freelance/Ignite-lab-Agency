@@ -101,7 +101,7 @@ export default function Navbar() {
                 </Link>
               );
             })}
-            <button className="bg-yellow-400 text-black px-6 py-4 rounded-full font-bold text-base w-full mt-4">
+            <button className="bg-yellow-400 text-black px-6 py-4 rounded-full font-bold text-base w-full mt-4 hover:bg-black hover:text-white">
               Get Started
             </button>
           </nav>

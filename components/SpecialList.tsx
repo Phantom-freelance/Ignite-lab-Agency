@@ -1,7 +1,7 @@
 "use client";
 import React from 'react';
 import Image from 'next/image';
-import { motion, Variants } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { 
   Check, 
   Monitor, 
@@ -11,33 +11,6 @@ import {
   Cloud, 
   Target 
 } from 'lucide-react';
-
-// 1. Keep these here, outside the component
-const contentVariants: Variants = {
-  hidden: { opacity: 0, x: -20 },
-  visible: { 
-    opacity: 1, 
-    x: 0, 
-    transition: { duration: 0.5, ease: "easeOut" } 
-  }
-};
-
-const cardVariants: Variants = {
-  hidden: { opacity: 0, y: 50 },
-  visible: { 
-    opacity: 1, 
-    y: 0, 
-    transition: { 
-      duration: 0.8, 
-      ease: [0.33, 1, 0.68, 1],
-      staggerChildren: 0.12,
-      delayChildren: 0.2
-    } 
-  },
-  hoverState: {
-    // defined here so the compiler knows it exists
-  }
-};
 
 const SpecialistsSection = () => {
   const expertise = [
@@ -73,8 +46,6 @@ const SpecialistsSection = () => {
     }
   ];
 
-  // NOTE: I DELETED THE REDUNDANT VARIANTS THAT WERE PREVIOUSLY HERE
-
   return (
     <section className="relative bg-[#FFD700] py-24 px-6 md:px-20 overflow-hidden text-black font-sans">
       
@@ -83,7 +54,7 @@ const SpecialistsSection = () => {
         <Image src="/dot-bg.png" alt="" fill className="object-contain" />
       </div>
 
-      <div className="relative z-10 mx-auto">
+      <div className="relative z-10 mx-auto ">
         {/* Header Section */}
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
@@ -94,73 +65,69 @@ const SpecialistsSection = () => {
           <h4 className="text-xl font-bold uppercase tracking-tight mb-4">Our Expertise</h4>
           <h2 
             className="text-6xl md:text-8xl font-black mb-12 leading-[0.85] tracking-tighter text-transparent"
-            style={{ WebkitTextStroke: '2.5px black' }}
+            style={{ WebkitTextStroke: '1.5px black' }}
           >
             Work Only with Specialists
           </h2>
-          <p className="text-2xl md:text-3xl font-regular leading-tight ">You would never go to your GP for heart surgery. So why would you get your most important online assets, your website, developed by a generalist "full service" marketing, SEO or creative agency? We've handpicked our web design Melbourne family to be top-notch web designers, web developers, conversion specialists, business analysts, API integrators, project managers and digital strategists - we're true web purists. Everything from simple websites to full business operational solutions.</p>
+          <p className="text-2xl md:text-3xl font-regular leading-tight max-w-5xl">
+            You would never go to your GP for heart surgery. We've handpicked our team to be top-notch web designers and true web purists.
+          </p>
         </motion.div>
 
-        {/* Grid Container */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-16 gap-y-24">
+        {/* 6 Card Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
           {expertise.map((item, index) => (
-            <motion.div 
-              key={index} 
-              variants={cardVariants}
-              initial="hidden"
-              whileInView="visible"
-              whileHover="hoverState"
-              viewport={{ once: true, amount: 0.1 }}
-              className="relative flex flex-col pt-4 pl-14 pb-8 pr-4"
-            >
-              {/* Left Border SVG */}
-              <div className="absolute left-0 top-0 bottom-0 w-10 pointer-events-none">
-                <Image 
-                  src="/left_boder.svg" 
-                  alt="" 
-                  fill 
-                  className="object-contain object-left-top" 
-                />
-              </div>
-
-              {/* Icon Area */}
-              <motion.div variants={contentVariants} className="relative mb-10 mt-2">
-                <motion.div 
-                  animate={{ scale: [1, 1.15, 1] }}
-                  transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
-                  className="absolute -left-5 w-24 h-24 bg-black/10 rounded-full" 
-                />
+            <div key={index} className="group h-[600px] [perspective:1200px]">
+              
+              {/* THE FLIPPING CORE */}
+              <motion.div 
+                className="relative w-full h-full transition-all duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]"
+              >
                 
-                <motion.div 
-                  variants={{
-                    hoverState: { scale: 1.25, rotate: 5 }
-                  }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                  className="relative w-24 h-24 flex items-center justify-center text-black"
-                >
-                  {item.icon}
-                </motion.div>
+                {/* FRONT SIDE (Gradient Wrapper) */}
+                <div className="absolute inset-0 w-full h-full p-[2px] rounded-[32px] bg-gradient-to-br from-black/20 via-black/5 to-white/30 [backface-visibility:hidden]">
+                    {/* Inner Content Container */}
+                    <div className="w-full h-full bg-[#FFD700] rounded-[30px] p-8 flex flex-col shadow-sm">
+                        <div className="mb-10 mt-2 text-black">
+                            {item.icon}
+                        </div>
+                        <h3 className="text-3xl font-bold leading-tight mb-8">
+                            {item.title}
+                        </h3>
+                        <ul className="space-y-4">
+                            {item.features.map((feature, fIndex) => (
+                            <li key={fIndex} className="flex items-start gap-4 text-sm lg:text-lg font-medium text-black/90">
+                                <Check size={20} className="mt-1 shrink-0" strokeWidth={3} />
+                                <span>{feature}</span>
+                            </li>
+                            ))}
+                        </ul>
+                    </div>
+                </div>
+
+                {/* BACK SIDE (Gradient Wrapper) */}
+                <div className="absolute inset-0 w-full h-full p-[2px] rounded-[32px] bg-gradient-to-br from-[#FFD700] via-white/40 to-[#FFD700] [backface-visibility:hidden] [transform:rotateY(180deg)] shadow-2xl">
+                    {/* Inner Content Container */}
+                    <div className="w-full h-full bg-black rounded-[30px] p-8 flex flex-col">
+                        <div className="mb-10 mt-2 text-[#FFD700]">
+                            {item.icon}
+                        </div>
+                        <h3 className="text-3xl font-bold leading-tight mb-8 text-white">
+                            {item.title}
+                        </h3>
+                        <ul className="space-y-4">
+                            {item.features.map((feature, fIndex) => (
+                            <li key={fIndex} className="flex items-start gap-4  text-sm lg:text-lg font-medium text-white/80">
+                                <Check size={20} className="mt-1 shrink-0 text-[#FFD700]" strokeWidth={3} />
+                                <span>{feature}</span>
+                            </li>
+                            ))}
+                        </ul>
+                    </div>
+                </div>
+
               </motion.div>
-
-              {/* Title */}
-              <motion.h3 variants={contentVariants} className="text-3xl font-bold leading-tight text-black min-h-[80px]">
-                {item.title}
-              </motion.h3>
-
-              {/* Features List */}
-              <ul className="space-y-5">
-                {item.features.map((feature, fIndex) => (
-                  <motion.li 
-                    key={fIndex} 
-                    variants={contentVariants}
-                    className="flex items-start gap-4 text-lg md:text-xl font-regular text-black/90 tracking-tight"
-                  >
-                    <Check size={22} className="mt-1 flex-shrink-0 text-black" strokeWidth={3.5} />
-                    <span className="leading-[1.2]">{feature}</span>
-                  </motion.li>
-                ))}
-              </ul>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

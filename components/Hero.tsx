@@ -24,10 +24,10 @@ export default function Hero() {
 
         {/* Buttons */}
         <div className="flex flex-col sm:flex-row gap-4 mt-10">
-          <button className="border-2 border-yellow-400 text-yellow-400 px-8 py-4 rounded-full text-[20px] font-medium font-poppins hover:bg-yellow-400 hover:text-black transition-all active:scale-95">
+          <button className="border-2 border-yellow-400 cursor-pointer text-yellow-400 px-8 py-4 rounded-full text-[20px] font-medium font-poppins hover:bg-black hover:text-white  transition-all active:scale-95">
             Start your project
           </button>
-          <button className="bg-yellow-400 text-black px-8 py-4 rounded-full text-[20px] font-medium font-poppins hover:bg-yellow-500 transition-all active:scale-95">
+          <button className="border-2 border-yellow-400 bg-yellow-400 cursor-pointer text-black px-8 py-4 rounded-full text-[20px] font-medium font-poppins hover:bg-black hover:text-white  transition-all active:scale-95">
             Apply as a freelancer
           </button>
         </div>
@@ -40,6 +40,9 @@ export default function Hero() {
           <h1 className="text-[50px] sm:text-[80px] md:text-[120px] lg:text-[160px] xl:text-[190px] font-bold text-yellow-400 leading-[0.8] tracking-tighter uppercase">
             Freelancer
           </h1>
+          <h2 className="block lg:hidden text-[50px] sm:text-[80px] md:text-[120px] lg:text-[160px] xl:text-[190px] font-bold text-yellow-400 leading-[0.8] tracking-tighter uppercase">
+            Agency
+          </h2>
         </div>
       </div>
 
