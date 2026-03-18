@@ -62,7 +62,7 @@ const SpecialistsSection = () => {
           viewport={{ once: true }}
           className="mb-24"
         >
-          <h4 className="text-xl font-bold uppercase tracking-tight mb-4">Our Expertise</h4>
+          <h4 className="text-xl font-bold tracking-tight mb-4">Our Expertise</h4>
           <h2 
             className="text-6xl md:text-8xl font-black mb-12 leading-[0.85] tracking-tighter text-transparent"
             style={{ WebkitTextStroke: '1.5px black' }}

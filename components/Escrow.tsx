@@ -60,7 +60,7 @@ const EscrowProcess = () => {
       {/* Header */}
       <div className="relative z-10 mx-auto w-full pt-20 md:pt-32 px-6 md:px-12">
         <div className="max-w-6xl">
-          <h4 className="text-sm md:text-lg font-bold uppercase tracking-widest text-zinc-500 mb-4">Secure Process</h4>
+          <h4 className="text-sm md:text-lg font-bold tracking-widest text-zinc-500 mb-4">Secure Process</h4>
           <h2 className="text-5xl md:text-8xl font-black mb-6 text-transparent leading-none"
               style={{ WebkitTextStroke: '1.5px #FFD700' }}>
             How Escrow Works

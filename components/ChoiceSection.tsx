@@ -254,7 +254,7 @@ With a dedicated team of 15+ full-time experts, a strong Melbourne presence an
               Be seen as the
             </h3>
             <h2 
-              className="text-5xl font-black uppercase leading-[1]"
+              className="text-5xl font-black leading-[1]"
               style={{ 
                 WebkitTextStroke: "1px black", 
                 color: "transparent" 
@@ -277,7 +277,7 @@ With a dedicated team of 15+ full-time experts, a strong Melbourne presence an
       </div>
 
       {/* ================= BLACK BOTTOM SECTION ================= */}
-      <div className="relative bg-black text-white px-6  pt-30">
+      <div className="relative bg-black text-white px-6 pt-30">
         
         {/* THE CIRCLE IMAGE - Overlapping the Yellow/Black line */}
         <div className="relative flex justify-center -mt-24 mb-12 z-20">

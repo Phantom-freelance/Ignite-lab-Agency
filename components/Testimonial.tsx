@@ -55,10 +55,10 @@ const Testimonials = () => {
     <section className="bg-black py-24 px-6 md:px-12 lg:px-24">
       {/* Header */}
       <div className="mb-16">
-        <p className="text-white text-sm font-bold uppercase tracking-widest mb-4">Testimonials</p>
+        <p className="text-white text-sm font-bold  tracking-widest mb-4">Testimonials</p>
         <h2 
           className="text-5xl md:text-7xl font-black tracking-tighter text-transparent leading-none"
-          style={{ WebkitTextStroke: '1px #FFC700' }}
+          style={{ WebkitTextStroke: '1.5px #FFC700' }}
         >
           Look What Our Customer Say!
         </h2>

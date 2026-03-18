@@ -155,7 +155,7 @@ const BlogSection = () => {
           </motion.button>
           <motion.button 
             whileHover={{ scale: 1.05, y: -5 }}
-            className="bg-black text-white px-12 py-5 rounded-full font-black uppercase tracking-widest text-sm shadow-2xl transition-all border border-zinc-800 w-full sm:w-auto text-center hover:bg-black hover:text-white"
+            className="bg-black text-white px-12 py-5 rounded-full font-black uppercase tracking-widest text-sm shadow-2xl transition-all border border-zinc-800 w-full sm:w-auto text-cente"
           >
             Apply as a freelancer
           </motion.button>

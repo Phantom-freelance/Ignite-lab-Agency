@@ -66,7 +66,7 @@ const PortfolioSection = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
           >
-            <h4 className="text-xl font-bold uppercase tracking-tight mb-4">Selected Work</h4>
+            <h4 className="text-xl font-bold tracking-tight mb-4">Selected Work</h4>
             <h2 className="text-6xl md:text-8xl font-black leading-[0.9] tracking-tighter text-transparent"
                 style={{ WebkitTextStroke: '1.5px #FFD700' }}>
               Portfolio /<br />Case Studies
