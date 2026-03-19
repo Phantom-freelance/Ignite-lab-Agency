@@ -8,43 +8,43 @@ const projects = [
     title: "SaaS Web Development",
     description:
       "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
-    image: "/figma-to-webflow.png",
-    color: "bg-white",
+    image: "/portfolio-inner1.svg",
+    color: "bg-black",
   },
   {
     title: "Frontend Development",
     description:
       "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
-    image: "/frontend.png",
-    color: "bg-[#FFC700]",
+    image: "/portfolio-inner2.svg",
+    color: "bg-black",
   },
   {
     title: "Figma to Webflow",
     description:
       "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
-    image: "/figma-stack.png",
-    color: "bg-white",
+    image: "/portfolio-inner3.svg",
+    color: "bg-black",
   },
   {
     title: "Project Templates",
     description:
       "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
-    image: "/portfolio.png",
-    color: "bg-[#0F3D3E]",
+    image: "/portfolio-inner4.svg",
+    color: "bg-black",
   },
   {
     title: "Web API Integration",
     description:
       "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
-    image: "/api.png",
-    color: "bg-white",
+    image: "/portfolio-inner2.svg",
+    color: "bg-black",
   },
   {
     title: "Digital Agency",
     description:
       "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
-    image: "/agency.png",
-    color: "bg-[#0F3D3E]",
+    image: "/portfolio-inner1.svg",
+    color: "bg-black",
   },
 ];
 
@@ -69,13 +69,13 @@ export default function ExactPortfolioTimeline() {
               <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20 hidden md:flex items-center w-full">
 
                 {/* LEFT LINE */}
-                <div className="flex-1 border-t-2 border-dashed border-[#FFC700]/30 mr-6 ml-[8%]" />
+                <div className="flex-1  border-dashed border-[#000000]/30 mr-6 ml-[8%]" />
 
                 {/* DOT */}
                 <div className="w-6 h-6 bg-[#FFC700] rounded-full border-4 border-black shadow-[0_0_15px_rgba(255,199,0,0.6)] z-10" />
 
                 {/* RIGHT LINE */}
-                <div className="flex-1 border-t-2 border-dashed border-[#FFC700]/30 ml-6 mr-[8%]" />
+                <div className="flex-1  border-dashed border-[#000000]/30 ml-6 mr-[8%]" />
 
               </div>
 

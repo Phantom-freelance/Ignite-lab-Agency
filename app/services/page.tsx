@@ -1,29 +1,37 @@
 "use client"
 
 import React from 'react';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
+import ServicesHero from '@/components/ServicesHero';
+import ServicesDescription from '@/components/ServicesDescription';
+import ServicesListing from '@/components/ServicesListing';
+import FAQ from '@/components/Faqs'; 
+import WhyChooseUs from '@/components/WhyChooseUs';
+import Testimonial from '@/components/Testimonial';
+import RequestForm from '@/components/RequestForm';
 
-export default function ComingSoon() {
+export default function AboutUs() {
   return (
-    <main className="min-h-screen flex items-center justify-center bg-black">
-      <div className="max-w-3xl mx-auto text-center px-6">
-        <h1 
-          className="text-6xl md:text-8xl font-black text-white uppercase mb-6" 
-          style={{ 
-            // Fix: React requires the 'W' to be capitalized for vendor prefixes
-            WebkitTextStroke: '1.5px #FFC700' 
-          }}
-        >
-          Architecture <span className="text-[#FFC700]">In Progress</span>
-        </h1>
-        
-        <p className="text-zinc-500 text-lg md:text-xl leading-relaxed">
-          We are currently engineering a high-performance digital experience for this section. 
-          Our team is finalizing the service frameworks to ensure they align with the 
-          BBR Agency standard of excellence.
-        </p>
-        
-        <div className="mt-10 h-1 w-20 bg-[#FFC700] mx-auto" />
+    <main className="w-full min-h-screen flex flex-col bg-black">
+      
+      {/* 1. Navbar (Full Width) */}
+      <Navbar />
+
+      {/* 2. Main Content Area */}
+      <div className="flex-1 w-full">
+        <ServicesHero/>
+        <ServicesDescription/>
+        <ServicesListing/>
+        <FAQ />
+        <WhyChooseUs/>
+        <Testimonial/>
+        <RequestForm/>
       </div>
+
+      {/* 3. Footer (Full Width) */}
+      
+      <Footer />
     </main>
   );
 }

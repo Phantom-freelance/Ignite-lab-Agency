@@ -97,7 +97,7 @@ const Footer = () => {
         <motion.div variants={itemVariants}>
           <h4 className="text-white font-black text-xl mb-10 uppercase tracking-widest">Quick Links</h4>
           <ul className="space-y-4">
-            {[{ name: 'Home', path: '/' }, { name: 'About', path: '/about' }, { name: 'Listings', path: '/listings' }, { name: 'Services', path: '/services' }, { name: 'Blogs', path: '/blogs' }].map((link) => (
+            {[ { name: 'About', path: '/about' }, { name: 'Portfolio', path: '/portfolio' }, { name: 'Services', path: '/services' }, { name: 'Blogs', path: '/blogs' }].map((link) => (
               <li key={link.name}>
                 <MotionLink 
                   href={link.path}

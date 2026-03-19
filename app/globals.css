@@ -21,13 +21,18 @@ h2.text-10xl{
   border-top-left-radius: 300px;
   margin-left: 15%;
 }
+.bg-radius1{
+  border-top-right-radius: 100px;
+}
 .left-15{
   left: -15%;
   top:3%;
 }
 .pad-l18{
   padding-left: 25%;
-  
+}
+.pad-r18{
+  padding-right: 10%;
 }
 .outline_typo{
   fill: none;
