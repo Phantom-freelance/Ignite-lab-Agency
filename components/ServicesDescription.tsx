@@ -55,10 +55,10 @@ export default function CompanySection() {
               <motion.div
                 initial={{ opacity: 0, x: 30 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                className="lg:pt-20 "
+                className="pt-20 "
               >
                 <div className="space-y-6 text-base md:text-lg text-zinc-100 leading-relaxed">
-                  <p className="text-3xl sm:text-2xl">
+                  <p className="text-xl">
                     Web design is more than just looking good! We create highly engaging custom websites that make your phone ring. After all, your website is your ultimate sales tool & best credibility check for confidence. Flexing our 3 key muscles of web design, web development and conversion experience, our Melbourne UI/UX specialists blend human behaviour “pre-suasion” psychology with technology to visually communicate your true value.
                     <br/><br/>
                     With a dedicated team of 15+ full-time experts, a strong Melbourne presence and 15+ years of insights, we’re honoured to have received 151+ 5 star Google reviews and 80+ awards & recognitions since 2009. This gives our clients specialist digital knowledge and a conversion framework that significantly reduces their marketing wastage and maximises their online web design & development engagement results.

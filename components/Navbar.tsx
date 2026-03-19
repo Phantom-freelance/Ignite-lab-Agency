@@ -82,7 +82,7 @@ export default function Navbar() {
       {/* Mobile Menu Overlay */}
       {isOpen && (
         <div className="fixed inset-0 top-[72px] w-full bg-black/98 z-[90] md:hidden animate-in fade-in slide-in-from-top-2">
-          <nav className="flex flex-col p-8 gap-8 text-lg font-medium">
+          <nav className="flex flex-col p-8 gap-8 text-lg font-medium bg-black">
             {navLinks.map((link) => {
               const isActive = pathname === link.href;
 

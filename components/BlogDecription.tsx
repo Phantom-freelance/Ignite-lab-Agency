@@ -29,7 +29,7 @@ export default function CompanySection() {
               className=""
             >
               <div className="space-y-6 text-base md:text-lg text-zinc-100 leading-relaxed">
-                <p className="text-3xl sm:text-2xl text-black">
+                <p className="text-xl text-black">
                   Web design is more than just looking good! We create highly engaging custom websites that make your phone ring. After all, your website is your ultimate sales tool & best credibility check for confidence. Flexing our 3 key muscles of web design, web development and conversion experience, our Melbourne UI/UX specialists blend human behaviour “pre-suasion” psychology with technology to visually communicate your true value.
 
                 </p>

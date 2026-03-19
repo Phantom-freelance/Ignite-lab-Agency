@@ -58,10 +58,10 @@ export default function IdentitySection() {
             viewport={{ once: true }}
             className="text-center max-w-6xl"
           >
-            <p className=" text-3xl sm:text-2xl leading-relaxed  font-regular">
+            <p className=" text-xl leading-relaxed  font-regular">
               You would never go to your GP for heart surgery. So why would you get your most important online assets, your website, developed by a generalist &quot;full service&quot; marketing, SEO or creative agency?
             </p>
-            <p className="text-3xl sm:text-2xl leading-relaxed  mt-6 font-regular">
+            <p className="text-xl  leading-relaxed  mt-6 font-regular">
               We&apos;ve handpicked our web design Melbourne family to be top-notch web designers, web developers, conversion specialists, business analysts, API integrators, project managers and digital strategists – we&apos;re true web purists. Everything from simple websites to full business operational solutions.
             </p>
           </motion.div>
