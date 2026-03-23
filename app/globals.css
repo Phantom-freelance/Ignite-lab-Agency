@@ -1,0 +1,52 @@
+
+@import "tailwindcss";
+
+@theme inline {
+--font-poppins: var(--font-poppins);
+--font-workSans: var(--font-work-sans)
+}
+header{
+  background-color: rgba(0, 0, 0, 0.5);
+}
+h1.text-11xl{
+  font-size: 196px;
+}
+h2.text-10xl{
+  font-size: 160px;
+}
+.bg-b-y{
+  background: linear-gradient(180deg, #FFC700 65.37%, #000000 65.38%);
+}
+.bg-radius{
+  border-top-left-radius: 300px;
+  margin-left: 15%;
+}
+.bg-radius1{
+  border-top-right-radius: 100px;
+}
+.left-15{
+  left: -15%;
+  top:3%;
+}
+.pad-l18{
+  padding-left: 25%;
+}
+.pad-r18{
+  padding-right: 10%;
+}
+.outline_typo{
+  fill: none;
+  stroke: #FFC700;
+  stroke-width: 1.5;
+}
+.w-h-400{
+  width: 400px;
+  height: 400px;
+}
+.card-outline{
+  border-left: 2px solid transparent; /* Set a transparent border */
+  border-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(102, 102, 102, 0)) 1;
+}
+.bg-black-15{
+  background-color: color-mix(in oklab, var(--color-black) 15%, transparent) !important;
+}

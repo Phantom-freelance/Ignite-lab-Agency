@@ -1,0 +1,8 @@
+
+@import "tailwind.config.ts";
+
+@theme inline {
+--font-poppins: var(--font-poppins);
+--font-workSans: var(--font-work-sans)
+}
+
