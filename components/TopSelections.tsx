@@ -7,42 +7,42 @@ const projects = [
   {
     title: "SaaS Web Development",
     description:
-      "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
+      "We build scalable and reliable SaaS platforms designed for performance and growth. Our focus is on creating seamless user experiences with strong, future-ready architecture.",
     image: "/portfolio-inner1.svg",
     color: "bg-black",
   },
   {
     title: "Frontend Development",
     description:
-      "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
+      "We build fast, responsive, and user-friendly interfaces that bring your ideas to life. Our focus is on clean code and smooth user experiences across all devices.",
     image: "/portfolio-inner2.svg",
     color: "bg-black",
   },
   {
     title: "Figma to Webflow",
     description:
-      "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
+      "We turn your Figma designs into fully responsive, high-performing Webflow websites. Every detail is carefully implemented to match design precision and smooth user experience.",
     image: "/portfolio-inner3.svg",
     color: "bg-black",
   },
   {
     title: "Project Templates",
     description:
-      "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
+      "Project templates help you kickstart work quickly with ready-made, structured setups. They save time, ensure consistency, and keep every project aligned from the start.",
     image: "/portfolio-inner4.svg",
     color: "bg-black",
   },
   {
     title: "Web API Integration",
     description:
-      "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
+      "We connect your systems seamlessly through reliable and efficient API integrations. Our goal is to streamline operations and ensure everything works together smoothly.",
     image: "/portfolio-inner2.svg",
     color: "bg-black",
   },
   {
     title: "Digital Agency",
     description:
-      "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
+      "We’re a digital agency focused on building websites that drive real results. We combine design, development, and strategy to help businesses grow online.",
     image: "/portfolio-inner1.svg",
     color: "bg-black",
   },
