@@ -59,10 +59,15 @@ export default function IdentitySection() {
             className="text-center max-w-6xl"
           >
             <p className=" text-xl leading-relaxed  font-regular">
-              You would never go to your GP for heart surgery. So why would you get your most important online assets, your website, developed by a generalist &quot;full service&quot; marketing, SEO or creative agency?
+             We’re a team of passionate web specialists who genuinely care about building things that work, not just look good. Our focus has always been on creating meaningful digital experiences that help businesses grow and connect with their audience.
             </p>
             <p className="text-xl  leading-relaxed  mt-6 font-regular">
-              We&apos;ve handpicked our web design Melbourne family to be top-notch web designers, web developers, conversion specialists, business analysts, API integrators, project managers and digital strategists – we&apos;re true web purists. Everything from simple websites to full business operational solutions.
+              Over time, we’ve evolved into more than just a digital agency. Alongside delivering high-quality web solutions, we’ve built a space where skilled freelancers and businesses can collaborate in a smarter, more focused way.
+            </p>
+            <p className="text-xl  leading-relaxed  mt-6 font-regular">
+            We believe in working with experts, not generalists, and that mindset reflects in everything we do from design to development to strategy. Every project we take on is approached with attention to detail, clear thinking, and a commitment to results.
+
+At our core, we’re problem-solvers who enjoy turning ideas into practical, scalable digital solutions.
             </p>
           </motion.div>
 
