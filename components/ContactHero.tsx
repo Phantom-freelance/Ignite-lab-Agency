@@ -1,8 +1,12 @@
 "use client"
 import React from 'react';
-import Link from 'next/link';
 
-const ServicesHero = () => {
+const ContactHero = () => {
+  const scrollToForm = () => {
+    const form = document.querySelector('form');
+    if (form) form.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <section 
       className="relative w-full bg-black pt-32 pb-16 px-6 md:px-12 lg:px-6 overflow-hidden" 
@@ -12,25 +16,23 @@ const ServicesHero = () => {
       }}
     >
       <h4 className="text-zinc-300 text-lg md:text-2xl font-medium mb-12 tracking-wide">
-        Our Work
+        Get In Touch
       </h4>
 
       <div className="flex flex-wrap gap-6 mb-16 relative z-10">
-        <Link href="/contact">
+        <a href="https://calendly.com" target="_blank" rel="noopener noreferrer">
           <button className="cursor-pointer px-10 py-4 rounded-full border-2 border-yellow-400 text-yellow-400 font-medium text-base md:text-lg transition-all duration-300 hover:bg-white hover:text-black active:scale-95">
-            Start your project
+            Schedule a Call
           </button>
-        </Link>
-        <Link href="/auth/signup">
-          <button className="cursor-pointer px-10 py-4 rounded-full bg-yellow-400 text-black font-medium text-base md:text-lg transition-all duration-300 hover:bg-white active:scale-95">
-            Apply as a freelancer
-          </button>
-        </Link>
+        </a>
+        <button onClick={scrollToForm} className="cursor-pointer px-10 py-4 rounded-full bg-yellow-400 text-black font-medium text-base md:text-lg transition-all duration-300 hover:bg-white active:scale-95">
+          Send Message
+        </button>
       </div>
 
       <div className="w-full">
         <h1 className="text-6xl sm:text-7xl md:text-[140px] lg:text-[200px] xl:text-[240px] font-black leading-[0.8] uppercase text-[#FFC700] tracking-tighter">
-          Services
+          Contact Us
         </h1>
       </div>
 
@@ -43,4 +45,4 @@ const ServicesHero = () => {
   );
 };
 
-export default ServicesHero;
+export default ContactHero;
