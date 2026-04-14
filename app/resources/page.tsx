@@ -1,82 +1,53 @@
 "use client";
 
-import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-
-const CATEGORIES = ["All", "Templates", "Guides", "Tools", "Ebooks"];
+import Link from "next/link";
 
 const RESOURCES = [
   {
-    id: 1,
-    title: "Website Launch Checklist",
-    category: "Guides",
-    description: "Complete 50-point checklist before going live with your website.",
-    format: "PDF",
-    size: "2.5 MB",
-    downloads: "1.2k",
-    icon: "📋",
-  },
-  {
-    id: 2,
-    title: "Landing Page Template",
-    category: "Templates",
-    description: "High-converting landing page template built with Next.js and Tailwind.",
-    format: "ZIP",
-    size: "5.8 MB",
-    downloads: "3.4k",
-    icon: "🎨",
-  },
-  {
-    id: 3,
-    title: "SEO Optimization Guide",
-    category: "Ebooks",
-    description: "Master on-page and off-page SEO to rank higher on Google.",
-    format: "PDF",
-    size: "8.3 MB",
-    downloads: "2.1k",
+    category: "Guides & Tutorials",
     icon: "📚",
+    items: [
+      { title: "Getting Started with Web Development", type: "PDF", size: "2.4 MB" },
+      { title: "SEO Best Practices 2026", type: "PDF", size: "1.8 MB" },
+      { title: "UI/UX Design Principles", type: "PDF", size: "3.2 MB" },
+      { title: "Social Media Marketing Guide", type: "PDF", size: "2.1 MB" },
+    ]
   },
   {
-    id: 4,
-    title: "Brand Identity Toolkit",
-    category: "Tools",
-    description: "Color palette generator, logo templates, and brand guidelines.",
-    format: "ZIP",
-    size: "12 MB",
-    downloads: "890",
-    icon: "✨",
+    category: "Templates & Tools",
+    icon: "🛠️",
+    items: [
+      { title: "Project Brief Template", type: "DOCX", size: "156 KB" },
+      { title: "Brand Guidelines Template", type: "PDF", size: "890 KB" },
+      { title: "Content Calendar Template", type: "XLSX", size: "245 KB" },
+      { title: "Wireframe Kit", type: "Figma", size: "N/A" },
+    ]
   },
   {
-    id: 5,
-    title: "Social Media Content Calendar",
-    category: "Templates",
-    description: "Plan 30 days of content across all platforms in one spreadsheet.",
-    format: "XLSX",
-    size: "1.2 MB",
-    downloads: "4.5k",
-    icon: "📅",
+    category: "Case Studies",
+    icon: "📊",
+    items: [
+      { title: "E-commerce Success Story", type: "PDF", size: "4.5 MB" },
+      { title: "SaaS Platform Redesign", type: "PDF", size: "3.8 MB" },
+      { title: "Mobile App Launch Strategy", type: "PDF", size: "2.9 MB" },
+      { title: "Brand Transformation Journey", type: "PDF", size: "5.1 MB" },
+    ]
   },
   {
-    id: 6,
-    title: "Web Design Trends 2026",
-    category: "Ebooks",
-    description: "Stay ahead with the latest design trends, patterns, and best practices.",
-    format: "PDF",
-    size: "6.7 MB",
-    downloads: "1.8k",
-    icon: "🚀",
+    category: "Industry Reports",
+    icon: "📈",
+    items: [
+      { title: "Digital Trends 2026", type: "PDF", size: "6.2 MB" },
+      { title: "Mobile-First Design Report", type: "PDF", size: "4.7 MB" },
+      { title: "AI in Web Development", type: "PDF", size: "3.5 MB" },
+      { title: "Future of E-commerce", type: "PDF", size: "5.8 MB" },
+    ]
   },
 ];
 
 export default function Resources() {
-  const [category, setCategory] = useState("All");
-
-  const filtered =
-    category === "All"
-      ? RESOURCES
-      : RESOURCES.filter((r) => r.category === category);
-
   return (
     <main className="w-full min-h-screen flex flex-col bg-black">
       <Navbar />
@@ -84,96 +55,68 @@ export default function Resources() {
       <div className="flex-1 w-full pt-32 pb-20">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           
-          {/* Header */}
           <div className="mb-16 text-center">
             <p className="text-yellow-400 font-black uppercase tracking-widest text-sm mb-4">
-              Free Downloads
+              Knowledge Base
             </p>
             <h1 className="text-5xl md:text-7xl font-black text-white mb-6">
-              Resources & Downloads
+              Free Resources
             </h1>
             <p className="text-zinc-400 text-xl max-w-2xl mx-auto">
-              Free templates, guides, and tools to help you build better digital products.
+              Download guides, templates, and tools to supercharge your digital projects.
             </p>
           </div>
 
-          {/* Category Filters */}
-          <div className="flex flex-wrap justify-center gap-4 mb-12">
-            {CATEGORIES.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setCategory(cat)}
-                className={`px-6 py-3 rounded-full font-bold transition-all ${
-                  category === cat
-                    ? "bg-yellow-400 text-black"
-                    : "bg-zinc-900 text-zinc-400 border border-zinc-800 hover:border-yellow-400 hover:text-white"
-                }`}
-              >
-                {cat}
-              </button>
-            ))}
-          </div>
-
-          {/* Resources Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filtered.map((resource) => (
+          <div className="grid lg:grid-cols-2 gap-8">
+            {RESOURCES.map((section, idx) => (
               <div
-                key={resource.id}
-                className="bg-zinc-900 border border-zinc-800 rounded-2xl p-8 hover:border-yellow-400 transition-all duration-300 group"
+                key={idx}
+                className="bg-zinc-900 border border-zinc-800 rounded-2xl p-8 hover:border-yellow-400 transition-all"
               >
-                <div className="flex items-start justify-between mb-6">
-                  <div className="w-16 h-16 rounded-2xl bg-yellow-400 flex items-center justify-center text-3xl group-hover:scale-110 transition-transform">
-                    {resource.icon}
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="w-16 h-16 rounded-2xl bg-yellow-400 flex items-center justify-center text-3xl">
+                    {section.icon}
                   </div>
-                  <span className="px-3 py-1 bg-yellow-400/20 text-yellow-400 rounded-full text-xs font-bold">
-                    {resource.category}
-                  </span>
+                  <h2 className="text-2xl font-black text-white">
+                    {section.category}
+                  </h2>
                 </div>
 
-                <h3 className="text-xl font-black text-white mb-3">
-                  {resource.title}
-                </h3>
-                <p className="text-zinc-400 mb-6 text-sm">
-                  {resource.description}
-                </p>
-
-                <div className="flex items-center gap-4 mb-6 text-xs text-zinc-500">
-                  <span className="flex items-center gap-1">
-                    📄 {resource.format}
-                  </span>
-                  <span className="flex items-center gap-1">
-                    💾 {resource.size}
-                  </span>
-                  <span className="flex items-center gap-1">
-                    ⬇️ {resource.downloads}
-                  </span>
+                <div className="space-y-3">
+                  {section.items.map((item, itemIdx) => (
+                    <div
+                      key={itemIdx}
+                      className="flex items-center justify-between p-4 bg-black border border-zinc-800 rounded-xl hover:border-yellow-400 transition-all group"
+                    >
+                      <div>
+                        <p className="font-bold text-white mb-1">{item.title}</p>
+                        <p className="text-zinc-500 text-sm">
+                          {item.type} • {item.size}
+                        </p>
+                      </div>
+                      <button className="px-4 py-2 bg-yellow-400 text-black rounded-full text-sm font-bold hover:bg-yellow-500 transition-all opacity-0 group-hover:opacity-100">
+                        Download
+                      </button>
+                    </div>
+                  ))}
                 </div>
-
-                <button className="w-full bg-yellow-400 text-black py-3 rounded-full font-bold hover:bg-yellow-500 transition-all group-hover:scale-105">
-                  Download Free →
-                </button>
               </div>
             ))}
           </div>
 
-          {/* Newsletter CTA */}
-          <div className="mt-20 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-2xl p-12 text-center">
-            <h2 className="text-4xl font-black text-black mb-4">
-              Get New Resources Weekly
+          <div className="mt-16 bg-zinc-900 border border-zinc-800 rounded-2xl p-12 text-center">
+            <h2 className="text-4xl font-black text-white mb-4">
+              Need Something Specific?
             </h2>
-            <p className="text-black/80 text-lg mb-8">
-              Subscribe to our newsletter for exclusive downloads and updates.
+            <p className="text-zinc-400 text-lg mb-8">
+              Can't find the resource you're looking for? Let us know and we'll create it for you.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="flex-1 px-6 py-4 rounded-full text-black bg-white/90 focus:outline-none focus:bg-white"
-              />
-              <button className="bg-black text-yellow-400 px-8 py-4 rounded-full font-bold hover:bg-zinc-900 transition-all whitespace-nowrap">
-                Subscribe →
-              </button>
-            </div>
+            <Link
+              href="/contact"
+              className="inline-block px-8 py-4 bg-yellow-400 text-black rounded-full font-bold text-lg hover:bg-yellow-500 transition-all"
+            >
+              Request a Resource →
+            </Link>
           </div>
         </div>
       </div>

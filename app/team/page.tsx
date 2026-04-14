@@ -2,6 +2,7 @@
 
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import Link from "next/link";
 
 const TEAM = [
   {
@@ -83,18 +84,18 @@ export default function Team() {
                 <p className="text-yellow-400 font-bold text-sm mb-4">{member.role}</p>
                 <p className="text-zinc-400 mb-6">{member.bio}</p>
                 <div className="flex gap-4">
-                  
+                  <Link
                     href={member.social.twitter}
                     className="w-10 h-10 rounded-full bg-zinc-800 hover:bg-yellow-400 flex items-center justify-center transition-all group"
                   >
                     <span className="group-hover:scale-110 transition-transform">🐦</span>
-                  </a>
-                  
+                  </Link>
+                  <Link
                     href={member.social.linkedin}
                     className="w-10 h-10 rounded-full bg-zinc-800 hover:bg-yellow-400 flex items-center justify-center transition-all group"
                   >
                     <span className="group-hover:scale-110 transition-transform">💼</span>
-                  </a>
+                  </Link>
                 </div>
               </div>
             ))}
@@ -106,12 +107,12 @@ export default function Team() {
             <p className="text-zinc-400 text-lg mb-8">
               We're always looking for talented individuals to join our growing team.
             </p>
-            
+            <Link
               href="/careers"
               className="inline-block bg-yellow-400 text-black px-8 py-4 rounded-full font-bold text-lg hover:bg-yellow-500 transition-all"
             >
               View Open Positions →
-            </a>
+            </Link>
           </div>
         </div>
       </div>
