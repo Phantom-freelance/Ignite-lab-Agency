@@ -24,10 +24,12 @@ services:
       - key: LOG_LEVEL
         value: info
       - key: DATABASE_URL
-        value: postgresql://postgres.ulqdwfbootuypmsoteir:YOUR_DB_PASSWORD@aws-0-eu-central-1.pooler.supabase.com:6543/postgres
+        value: postgresql://postgres:qsnJKfjn5olCLWUH@db.ulqdwfbootuypmsoteir.supabase.co:5432/postgres
       - key: SUPABASE_URL
         value: https://ulqdwfbootuypmsoteir.supabase.co
       - key: SUPABASE_KEY
         value: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVscWR3ZmJvb3R1eXBtc290ZWlyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYwNTI4MDgsImV4cCI6MjA5MTYyODgwOH0.m7g0DOm2N96ATSFJEi8kjQRDdvnlD0D3r6MgQABq7Ok
       - key: SUPABASE_SERVICE_ROLE_KEY
         value: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVscWR3ZmJvb3R1eXBtc290ZWlyIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3NjA1MjgwOCwiZXhwIjoyMDkxNjI4ODA4fQ.MeD1ZySB2orUopaDDpFA5uBuB1EuoWlzCFmtH34Q2tI
+      - key: CRON_REMINDER
+        value: "*/5 * * * *"
