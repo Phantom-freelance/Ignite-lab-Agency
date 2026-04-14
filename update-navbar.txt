@@ -1,0 +1,8 @@
+Add these links to your Navbar component navLinks array:
+
+{ name: "Careers", href: "/careers" },
+{ name: "Team", href: "/team" },
+{ name: "Pricing", href: "/pricing-calculator" },
+{ name: "Resources", href: "/resources" },
+
+And in the dashboard, add links to billing and profile!
