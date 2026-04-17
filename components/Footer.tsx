@@ -98,13 +98,13 @@ const Footer = () => {
             <div className="pt-6">
               <p className="text-zinc-500 text-sm font-black uppercase tracking-[0.3em] mb-6">Follow Us</p>
               <div className="flex gap-4">
-                <a href="https://twitter.com/jobnme" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-zinc-800 rounded-full flex items-center justify-center hover:bg-yellow-400 transition-colors">
+                <a href="https://www.x.com/jobnme" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-zinc-800 rounded-full flex items-center justify-center hover:bg-yellow-400 transition-colors">
                   <span className="text-white text-sm font-bold">T</span>
                 </a>
-                <a href="https://linkedin.com/company/jobnme" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-zinc-800 rounded-full flex items-center justify-center hover:bg-yellow-400 transition-colors">
+                <a href="https://www.linkedin.com/in/phantom-collective-ab528a404/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-zinc-800 rounded-full flex items-center justify-center hover:bg-yellow-400 transition-colors">
                   <span className="text-white text-sm font-bold">L</span>
                 </a>
-                <a href="https://instagram.com/jobnme" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-zinc-800 rounded-full flex items-center justify-center hover:bg-yellow-400 transition-colors">
+                <a href="https://www.instagram.com/jobnme1" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-zinc-800 rounded-full flex items-center justify-center hover:bg-yellow-400 transition-colors">
                   <span className="text-white text-sm font-bold">I</span>
                 </a>
               </div>
