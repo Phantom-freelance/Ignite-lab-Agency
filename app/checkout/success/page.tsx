@@ -1,18 +1,16 @@
 "use client";
-
-import { useEffect } from "react";
+import { useEffect, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
-export default function CheckoutSuccess() {
+function CheckoutSuccessContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const sessionId = searchParams.get("session_id");
 
   useEffect(() => {
-    // Verify payment with backend
     if (sessionId) {
       fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/verify-payment`, {
         method: "POST",
@@ -25,14 +23,11 @@ export default function CheckoutSuccess() {
   return (
     <main className="w-full min-h-screen flex flex-col bg-black">
       <Navbar />
-
       <div className="flex-1 flex items-center justify-center px-6">
         <div className="max-w-2xl w-full text-center">
-          {/* Success Animation */}
           <div className="w-32 h-32 mx-auto mb-8 rounded-full bg-green-500/20 flex items-center justify-center">
             <span className="text-7xl">✅</span>
           </div>
-
           <h1 className="text-5xl md:text-7xl font-black text-white mb-6">
             Payment Successful!
           </h1>
@@ -40,7 +35,6 @@ export default function CheckoutSuccess() {
           <p className="text-xl text-zinc-400 mb-8">
             Thank you for your order! We've received your payment and will start working on your project right away.
           </p>
-
           <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-8 mb-8">
             <p className="text-zinc-500 text-sm font-bold uppercase mb-2">What's Next?</p>
             <ul className="space-y-3 text-left">
@@ -58,7 +52,6 @@ export default function CheckoutSuccess() {
               </li>
             </ul>
           </div>
-
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/dashboard/orders"
@@ -75,8 +68,23 @@ export default function CheckoutSuccess() {
           </div>
         </div>
       </div>
-
       <Footer />
     </main>
+  );
+}
+
+export default function CheckoutSuccess() {
+  return (
+    <Suspense fallback={
+      <main className="w-full min-h-screen flex flex-col bg-black">
+        <Navbar />
+        <div className="flex-1 flex items-center justify-center">
+          <div className="text-white text-xl">Loading...</div>
+        </div>
+        <Footer />
+      </main>
+    }>
+      <CheckoutSuccessContent />
+    </Suspense>
   );
 }
