@@ -77,8 +77,8 @@ const PrivacyContent = () => {
           </h2>
           <p className="text-zinc-300 text-lg">
             If you have questions about this Privacy Policy, please contact us at{' '}
-            <a href="mailto:privacy@phantomfreelance.com" className="text-yellow-400 hover:underline font-semibold">
-              privacy@phantomfreelance.com
+            <a href="mailto:privacy@jobnme.com" className="text-yellow-400 hover:underline font-semibold">
+              privacy@jobnme.com
             </a>
           </p>
         </div>

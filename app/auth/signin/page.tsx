@@ -80,7 +80,9 @@ export default function SignIn() {
 
           <p className="text-zinc-400 text-center mt-6">
             Don't have an account?{' '}
-            <Link href="/auth/signup" className="text-yellow-400 hover:underline font-medium">
+            <Link href="/auth/forgot-password" className="text-yellow-400 hover:underline font-medium">Forgot password?</Link>
+            </p>
+            <p className="text-center text-zinc-500 text-sm mt-2">No account? <Link href="/auth/signup" className="text-yellow-400 hover:underline font-medium">
               Sign up
             </Link>
           </p>

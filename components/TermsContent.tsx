@@ -113,8 +113,8 @@ const TermsContent = () => {
           </h2>
           <p className="text-zinc-300 text-lg">
             For questions about these Terms of Service, contact us at{' '}
-            <a href="mailto:legal@phantomfreelance.com" className="text-yellow-400 hover:underline font-semibold">
-              legal@phantomfreelance.com
+            <a href="mailto:legal@jobnme.com" className="text-yellow-400 hover:underline font-semibold">
+              legal@jobnme.com
             </a>
           </p>
         </div>

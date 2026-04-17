@@ -30,8 +30,8 @@ export default function CheckoutCancel() {
               If you experienced any issues during checkout, our support team is here to help!
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center text-sm">
-              <a href="mailto:support@bbragency.com" className="text-yellow-400 hover:text-yellow-500 font-bold">
-                📧 support@bbragency.com
+              <a href="mailto:support@jobnme.com" className="text-yellow-400 hover:text-yellow-500 font-bold">
+                📧 support@jobnme.com
               </a>
               <span className="text-zinc-600 hidden sm:block">|</span>
               <a href="tel:+1234567890" className="text-yellow-400 hover:text-yellow-500 font-bold">

@@ -14,7 +14,7 @@ export default function AdminLogin() {
     setError("");
 
     setTimeout(() => {
-      if (credentials.email === "admin@bbragency.com" && credentials.password === "admin123") {
+      if (credentials.email === "admin@jobnme.com" && credentials.password === "admin123") {
         localStorage.setItem("adminToken", "authenticated");
         router.push("/admin");
       } else {
@@ -47,7 +47,7 @@ export default function AdminLogin() {
               <label className="text-zinc-500 text-sm font-bold uppercase mb-2 block">Email</label>
               <input
                 type="email"
-                placeholder="admin@bbragency.com"
+                placeholder="admin@jobnme.com"
                 value={credentials.email}
                 onChange={(e) => setCredentials({ ...credentials, email: e.target.value })}
                 className="w-full px-4 py-3 bg-black border border-zinc-800 rounded-xl text-white focus:outline-none focus:border-yellow-400"
