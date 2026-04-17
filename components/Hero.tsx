@@ -27,10 +27,10 @@ export default function Hero() {
         
         <div className="mt-16">
           <h2 className="text-[24px] md:text-[50px] lg:text-[50px] tracking-[0.2em] text-white font-medium uppercase">
-            Phantom Freelance
+            The Freelance
           </h2>
           <h1 className="text-6xl sm:text-7xl md:text-[140px] lg:text-[200px] xl:text-[240px] font-black leading-[0.8] uppercase text-[#FFC700] tracking-tighter">
-            Collective
+            Jobnme
           </h1>
         </div>
       </div>

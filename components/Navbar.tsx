@@ -3,14 +3,13 @@
 import React, { useState, useEffect } from "react"
 import { Menu, X } from "lucide-react"
 import Link from 'next/link';
-import { usePathname } from 'next/navigation'; // Added to detect active page
+import { usePathname } from 'next/navigation';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
-  const pathname = usePathname(); // Get current URL path
+  const pathname = usePathname();
 
-  // Adds a background color/blur after scrolling 20px
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20)
@@ -22,7 +21,7 @@ export default function Navbar() {
   const navLinks = [
     { name: "Home", href: "/" },
     { name: "About", href: "/about" },
-    { name: "Portfolio", href: "/portfolio" }, // Fixed: matches folder name
+    { name: "Portfolio", href: "/portfolio" },
     { name: "Services", href: "/services" },
     { name: "Blogs", href: "/blogs" },
   ];
@@ -35,19 +34,15 @@ export default function Navbar() {
     >
       <div className="mx-auto flex items-center justify-between px-6 text-white">
         
-        {/* Logo */}
         <Link href="/">
-          <h1 className="text-xl md:text-2xl font-bold cursor-pointer">
-            BBR <span className="text-yellow-400">Agency</span>
+          <h1 className="text-xl md:text-2xl font-black cursor-pointer tracking-tight">
+            job<span className="text-yellow-400">nme</span>
           </h1>
         </Link>
 
-        {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-8 text-base font-medium">
           {navLinks.map((link) => {
-            // Check if current page matches link href
             const isActive = pathname === link.href;
-            
             return (
               <Link
                 key={link.name}
@@ -64,12 +59,10 @@ export default function Navbar() {
           })}
         </nav>
 
-        {/* Desktop Button */}
         <button className="hidden md:block bg-yellow-400 text-black px-6 py-2 rounded-full font-bold text-base hover:bg-yellow-500 transition-transform active:scale-95">
           Get Started
         </button>
 
-        {/* Mobile Menu Toggle */}
         <button 
           className="md:hidden text-white p-2"
           onClick={() => setIsOpen(!isOpen)}
@@ -79,13 +72,11 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* Mobile Menu Overlay */}
       {isOpen && (
         <div className="fixed inset-0 top-[72px] w-full bg-black/98 z-[90] md:hidden animate-in fade-in slide-in-from-top-2">
           <nav className="flex flex-col p-8 gap-8 text-lg font-medium bg-black">
             {navLinks.map((link) => {
               const isActive = pathname === link.href;
-
               return (
                 <Link
                   key={link.name}

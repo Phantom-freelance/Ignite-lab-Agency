@@ -14,11 +14,10 @@ const workSans = Work_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "BBR Agency",
-  description: "Bespoke Digital Solutions",
+  title: "Jobnme — Freelance Marketplace",
+  description: "Jobnme connects top freelancers with clients worldwide. Fast, flexible, escrow-protected.",
 };
 
-// app/layout.tsx
 export default function RootLayout({
   children,
 }: {
@@ -28,7 +27,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning={true}>
       <body 
         className={`${poppins.variable} ${workSans.variable} antialiased`}
-        suppressHydrationWarning={true} // Add it here too
+        suppressHydrationWarning={true}
       >
         {children}
       </body>

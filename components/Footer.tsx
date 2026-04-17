@@ -10,9 +10,6 @@ const Footer = () => {
   const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email) return;
-    
-    console.log('Subscribed:', email);
-    
     setIsSubscribed(true);
     setTimeout(() => {
       setIsSubscribed(false);
@@ -22,10 +19,7 @@ const Footer = () => {
 
   const containerVariants = {
     hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.1 }
-    }
+    visible: { opacity: 1, transition: { staggerChildren: 0.1 } }
   };
 
   const itemVariants = {
@@ -44,9 +38,14 @@ const Footer = () => {
       >
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
           <motion.div variants={itemVariants}>
-            <h3 className="text-yellow-400 text-4xl font-black mb-6">PFC</h3>
+            <h3 className="text-yellow-400 text-4xl font-black mb-6 tracking-tight">
+              job<span className="text-white">nme</span>
+            </h3>
             <p className="text-zinc-400 text-sm leading-relaxed">
-              Phantom Freelance Collective - Uniting top freelancers under one roof.
+              Jobnme — Uniting top freelancers with clients worldwide. Fast, flexible, escrow-protected.
+            </p>
+            <p className="text-zinc-500 text-sm mt-4">
+              Need help? <a href="mailto:support@jobnme.com" className="text-yellow-400 hover:underline">support@jobnme.com</a>
             </p>
           </motion.div>
 
@@ -99,13 +98,13 @@ const Footer = () => {
             <div className="pt-6">
               <p className="text-zinc-500 text-sm font-black uppercase tracking-[0.3em] mb-6">Follow Us</p>
               <div className="flex gap-4">
-                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-zinc-800 rounded-full flex items-center justify-center hover:bg-yellow-400 transition-colors">
+                <a href="https://twitter.com/jobnme" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-zinc-800 rounded-full flex items-center justify-center hover:bg-yellow-400 transition-colors">
                   <span className="text-white text-sm font-bold">T</span>
                 </a>
-                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-zinc-800 rounded-full flex items-center justify-center hover:bg-yellow-400 transition-colors">
+                <a href="https://linkedin.com/company/jobnme" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-zinc-800 rounded-full flex items-center justify-center hover:bg-yellow-400 transition-colors">
                   <span className="text-white text-sm font-bold">L</span>
                 </a>
-                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-zinc-800 rounded-full flex items-center justify-center hover:bg-yellow-400 transition-colors">
+                <a href="https://instagram.com/jobnme" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-zinc-800 rounded-full flex items-center justify-center hover:bg-yellow-400 transition-colors">
                   <span className="text-white text-sm font-bold">I</span>
                 </a>
               </div>
@@ -117,7 +116,7 @@ const Footer = () => {
           variants={itemVariants}
           className="border-t border-zinc-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4"
         >
-          <p className="text-zinc-500 text-sm">© 2025 Phantom Freelance Collective. All rights reserved.</p>
+          <p className="text-zinc-500 text-sm">© 2025 Jobnme. All rights reserved.</p>
           <div className="flex gap-6 text-sm">
             <Link href="/privacy" className="text-zinc-500 hover:text-yellow-400 transition-colors">Privacy Policy</Link>
             <Link href="/terms" className="text-zinc-500 hover:text-yellow-400 transition-colors">Terms of Service</Link>
