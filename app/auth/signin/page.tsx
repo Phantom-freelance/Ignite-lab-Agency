@@ -74,7 +74,6 @@ export default function SignIn() {
               onClick={redirectToTaskManager}
               className="text-yellow-400 hover:underline text-sm"
             >
-              Or continue to Task Manager directly →
             </button>
           </div>
 
