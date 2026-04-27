@@ -11,7 +11,7 @@ const TermsContent = () => {
             1. <span className="text-yellow-400">Acceptance</span> of Terms
           </h2>
           <p className="text-zinc-300 text-lg">
-            By accessing and using <span className="text-yellow-400 font-semibold">Jobnme Agency ("Jobnme")</span>, you agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use our services.
+            By accessing and using <span className="text-yellow-400 font-semibold">Job-N-Me Agency ("Job-N-Me")</span>, you agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use our services.
           </p>
         </div>
 
@@ -19,7 +19,7 @@ const TermsContent = () => {
           <h2 className="text-4xl md:text-5xl font-black text-white mb-6">
             2. Service <span className="text-yellow-400">Description</span>
           </h2>
-          <p className="text-zinc-300 text-lg mb-4">Jobnme provides a platform connecting clients with freelance professionals for various services including:</p>
+          <p className="text-zinc-300 text-lg mb-4">Job-N-Me provides a platform connecting clients with freelance professionals for various services including:</p>
           <ul className="space-y-3 ml-6">
             <li className="text-zinc-400 text-lg">• Web and mobile development</li>
             <li className="text-zinc-400 text-lg">• UI/UX design</li>
@@ -85,7 +85,7 @@ const TermsContent = () => {
             7. Limitation of <span className="text-yellow-400">Liability</span>
           </h2>
           <p className="text-zinc-300 text-lg">
-            Jobnme acts as a platform connecting clients and freelancers. We are <span className="text-yellow-400 font-semibold">not responsible</span> for the quality of work delivered or disputes between parties, though we provide mediation services.
+            Job-N-Me acts as a platform connecting clients and freelancers. We are <span className="text-yellow-400 font-semibold">not responsible</span> for the quality of work delivered or disputes between parties, though we provide mediation services.
           </p>
         </div>
 
@@ -113,8 +113,8 @@ const TermsContent = () => {
           </h2>
           <p className="text-zinc-300 text-lg">
             For questions about these Terms of Service, contact us at{' '}
-            <a href="mailto:legal@jobnme.com" className="text-yellow-400 hover:underline font-semibold">
-              legal@jobnme.com
+            <a href="mailto:legal@job-n-me.com" className="text-yellow-400 hover:underline font-semibold">
+              legal@job-n-me.com
             </a>
           </p>
         </div>

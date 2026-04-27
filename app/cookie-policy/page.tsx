@@ -15,7 +15,7 @@ export default function CookiePolicy() {
 
           <section>
             <h2 className="text-white text-xl font-bold mb-3">2. How We Use Cookies</h2>
-            <p>Jobnme uses cookies for the following purposes:</p>
+            <p>Job-N-Me uses cookies for the following purposes:</p>
             <ul className="list-disc list-inside mt-3 space-y-2 text-zinc-400">
               <li><span className="text-white font-medium">Essential Cookies:</span> Required for the platform to function — login sessions, security tokens, and user preferences</li>
               <li><span className="text-white font-medium">Analytics Cookies:</span> Help us understand how visitors use our site so we can improve the experience</li>
@@ -47,12 +47,12 @@ export default function CookiePolicy() {
 
           <section>
             <h2 className="text-white text-xl font-bold mb-3">6. Your Consent</h2>
-            <p>By continuing to use jobnme.com, you consent to our use of cookies as described in this policy. You may withdraw consent at any time by clearing cookies in your browser settings.</p>
+            <p>By continuing to use job-n-me.com, you consent to our use of cookies as described in this policy. You may withdraw consent at any time by clearing cookies in your browser settings.</p>
           </section>
 
           <section>
             <h2 className="text-white text-xl font-bold mb-3">7. Contact Us</h2>
-            <p>If you have questions about our cookie policy, contact us at <a href="mailto:support@jobnme.com" className="text-yellow-400 hover:underline">support@jobnme.com</a></p>
+            <p>If you have questions about our cookie policy, contact us at <a href="mailto:support@job-n-me.com" className="text-yellow-400 hover:underline">support@job-n-me.com</a></p>
           </section>
         </div>
 

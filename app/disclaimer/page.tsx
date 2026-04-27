@@ -10,7 +10,7 @@ export default function Disclaimer() {
         <div className="space-y-10 text-zinc-300 leading-relaxed">
           <section>
             <h2 className="text-white text-xl font-bold mb-3">1. General Information</h2>
-            <p>The information provided by Jobnme ("we," "us," or "our") on jobnme.com is for general informational purposes only. All information on the site is provided in good faith, however we make no representation or warranty of any kind, express or implied, regarding the accuracy, adequacy, validity, reliability, availability, or completeness of any information on the site.</p>
+            <p>The information provided by Job-N-Me ("we," "us," or "our") on job-n-me.com is for general informational purposes only. All information on the site is provided in good faith, however we make no representation or warranty of any kind, express or implied, regarding the accuracy, adequacy, validity, reliability, availability, or completeness of any information on the site.</p>
           </section>
 
           <section>
@@ -20,27 +20,27 @@ export default function Disclaimer() {
 
           <section>
             <h2 className="text-white text-xl font-bold mb-3">3. External Links Disclaimer</h2>
-            <p>The site may contain links to external websites that are not provided or maintained by or in any way affiliated with Jobnme. We do not guarantee the accuracy, relevance, timeliness, or completeness of any information on these external websites.</p>
+            <p>The site may contain links to external websites that are not provided or maintained by or in any way affiliated with Job-N-Me. We do not guarantee the accuracy, relevance, timeliness, or completeness of any information on these external websites.</p>
           </section>
 
           <section>
             <h2 className="text-white text-xl font-bold mb-3">4. Freelancer & Client Disclaimer</h2>
-            <p>Jobnme acts as a platform connecting freelancers and clients. We are not responsible for the quality, timeliness, or outcome of any work delivered by freelancers through our platform. Clients engage freelancers at their own discretion and risk. All disputes between clients and freelancers are subject to our dispute resolution policy.</p>
+            <p>Job-N-Me acts as a platform connecting freelancers and clients. We are not responsible for the quality, timeliness, or outcome of any work delivered by freelancers through our platform. Clients engage freelancers at their own discretion and risk. All disputes between clients and freelancers are subject to our dispute resolution policy.</p>
           </section>
 
           <section>
             <h2 className="text-white text-xl font-bold mb-3">5. AI-Generated Content</h2>
-            <p>Jobnme uses artificial intelligence tools to assist with proposal generation, job matching, and communication. AI-generated content is provided as a starting point and may require human review. We are not liable for any inaccuracies in AI-generated content used on or through our platform.</p>
+            <p>Job-N-Me uses artificial intelligence tools to assist with proposal generation, job matching, and communication. AI-generated content is provided as a starting point and may require human review. We are not liable for any inaccuracies in AI-generated content used on or through our platform.</p>
           </section>
 
           <section>
             <h2 className="text-white text-xl font-bold mb-3">6. Limitation of Liability</h2>
-            <p>Under no circumstance shall Jobnme be liable for any loss or damage of any kind incurred as a result of the use of the site or reliance on any information provided on the site. Your use of the site and your reliance on any information on the site is solely at your own risk.</p>
+            <p>Under no circumstance shall Job-N-Me be liable for any loss or damage of any kind incurred as a result of the use of the site or reliance on any information provided on the site. Your use of the site and your reliance on any information on the site is solely at your own risk.</p>
           </section>
 
           <section>
             <h2 className="text-white text-xl font-bold mb-3">7. Contact Us</h2>
-            <p>If you have any questions about this disclaimer, please contact us at <a href="mailto:support@jobnme.com" className="text-yellow-400 hover:underline">support@jobnme.com</a></p>
+            <p>If you have any questions about this disclaimer, please contact us at <a href="mailto:support@job-n-me.com" className="text-yellow-400 hover:underline">support@job-n-me.com</a></p>
           </section>
         </div>
 

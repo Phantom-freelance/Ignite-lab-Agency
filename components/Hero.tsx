@@ -30,7 +30,7 @@ export default function Hero() {
             The Freelance
           </h2>
           <h1 className="text-6xl sm:text-7xl md:text-[140px] lg:text-[200px] xl:text-[240px] font-black leading-[0.8] uppercase text-[#FFC700] tracking-tighter">
-            Jobnme
+            Job-N-Me
           </h1>
         </div>
       </div>

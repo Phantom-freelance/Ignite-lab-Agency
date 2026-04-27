@@ -10,12 +10,12 @@ export default function RefundPolicy() {
         <div className="space-y-10 text-zinc-300 leading-relaxed">
           <section>
             <h2 className="text-white text-xl font-bold mb-3">1. Overview</h2>
-            <p>At Jobnme, we are committed to ensuring satisfaction for both clients and freelancers. This Refund Policy outlines the conditions under which refunds may be issued for services purchased through our platform.</p>
+            <p>At Job-N-Me, we are committed to ensuring satisfaction for both clients and freelancers. This Refund Policy outlines the conditions under which refunds may be issued for services purchased through our platform.</p>
           </section>
 
           <section>
             <h2 className="text-white text-xl font-bold mb-3">2. Escrow Protection</h2>
-            <p>All payments made through Jobnme are held in escrow until the client confirms satisfactory completion of the work. Funds are only released to the freelancer upon client approval. This protects clients from paying for work that does not meet agreed requirements.</p>
+            <p>All payments made through Job-N-Me are held in escrow until the client confirms satisfactory completion of the work. Funds are only released to the freelancer upon client approval. This protects clients from paying for work that does not meet agreed requirements.</p>
           </section>
 
           <section>
@@ -46,7 +46,7 @@ export default function RefundPolicy() {
             <h2 className="text-white text-xl font-bold mb-3">5. How to Request a Refund</h2>
             <p>To request a refund, please follow these steps:</p>
             <ul className="list-disc list-inside mt-3 space-y-2 text-zinc-400">
-              <li>Contact our support team at <a href="mailto:support@jobnme.com" className="text-yellow-400 hover:underline">support@jobnme.com</a> within 14 days of the issue</li>
+              <li>Contact our support team at <a href="mailto:support@job-n-me.com" className="text-yellow-400 hover:underline">support@job-n-me.com</a> within 14 days of the issue</li>
               <li>Provide your order ID, project details, and reason for the refund request</li>
               <li>Our team will review the request within 3-5 business days</li>
               <li>If approved, refunds will be processed within 7-10 business days</li>
@@ -55,7 +55,7 @@ export default function RefundPolicy() {
 
           <section>
             <h2 className="text-white text-xl font-bold mb-3">6. Dispute Resolution</h2>
-            <p>If a dispute arises between a client and freelancer, Jobnme offers mediation services. Both parties will be given the opportunity to present evidence. Our team will make a fair determination based on the project agreement, communications, and deliverables submitted.</p>
+            <p>If a dispute arises between a client and freelancer, Job-N-Me offers mediation services. Both parties will be given the opportunity to present evidence. Our team will make a fair determination based on the project agreement, communications, and deliverables submitted.</p>
           </section>
 
           <section>
@@ -65,7 +65,7 @@ export default function RefundPolicy() {
 
           <section>
             <h2 className="text-white text-xl font-bold mb-3">8. Contact Us</h2>
-            <p>For any refund-related queries, contact us at <a href="mailto:support@jobnme.com" className="text-yellow-400 hover:underline">support@jobnme.com</a></p>
+            <p>For any refund-related queries, contact us at <a href="mailto:support@job-n-me.com" className="text-yellow-400 hover:underline">support@job-n-me.com</a></p>
           </section>
         </div>
 

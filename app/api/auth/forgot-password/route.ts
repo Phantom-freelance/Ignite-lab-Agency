@@ -24,7 +24,7 @@ export async function POST(req: NextRequest) {
     await sgMail.send({
       to: email,
       from: process.env.FROM_EMAIL!,
-      subject: 'Reset your Jobnme password',
+      subject: 'Reset your Job-N-Me password',
       html: `
         <div style="background:#000;color:#fff;font-family:sans-serif;padding:40px;max-width:600px;margin:0 auto;border-radius:12px;">
           <h1 style="color:#facc15;font-size:32px;margin-bottom:8px;">job<span style="color:#fff;">nme</span></h1>
@@ -32,7 +32,7 @@ export async function POST(req: NextRequest) {
           <p style="color:#a1a1aa;">You requested a password reset. Click the button below to set a new password. This link expires in 1 hour.</p>
           <a href="${resetUrl}" style="display:inline-block;margin-top:24px;background:#facc15;color:#000;font-weight:900;padding:14px 28px;border-radius:10px;text-decoration:none;font-size:16px;">Reset Password</a>
           <p style="color:#52525b;margin-top:32px;font-size:12px;">If you didn't request this, ignore this email. Your password won't change.</p>
-          <p style="color:#52525b;font-size:12px;">© 2025 Jobnme. All rights reserved.</p>
+          <p style="color:#52525b;font-size:12px;">© 2025 Job-N-Me. All rights reserved.</p>
         </div>
       `,
     });

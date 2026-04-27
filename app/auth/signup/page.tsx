@@ -31,7 +31,7 @@ export default function SignUp() {
     <main className="min-h-screen bg-black flex items-center justify-center px-6 py-12">
       <div className="max-w-md w-full">
         <Link href="/" className="text-4xl font-bold text-yellow-400 block text-center mb-8">
-          Jobnme
+          Job-N-Me
         </Link>
         <div className="bg-zinc-900 rounded-3xl p-8 border border-zinc-800">
           <h1 className="text-3xl font-bold text-white mb-2">Get Started</h1>

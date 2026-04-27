@@ -155,7 +155,7 @@ export default function FAQ() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               
-<a href="mailto:support@jobnme.com"
+<a href="mailto:support@job-n-me.com"
                 className="px-8 py-4 bg-yellow-400 text-black rounded-full font-bold text-lg hover:bg-yellow-500 transition-all"
               >
                 Email Support

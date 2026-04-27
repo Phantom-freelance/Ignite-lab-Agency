@@ -6,8 +6,8 @@ export default function AdminSettings() {
   const [saved, setSaved] = useState(false);
   const [settings, setSettings] = useState({
     siteName: "BBR Agency",
-    siteEmail: "hello@jobnme.com",
-    supportEmail: "support@jobnme.com",
+    siteEmail: "hello@job-n-me.com",
+    supportEmail: "support@job-n-me.com",
     phone: "+1 (555) 000-0000",
     address: "123 Agency St, San Francisco, CA",
     maintenanceMode: false,
