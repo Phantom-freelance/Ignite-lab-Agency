@@ -14,8 +14,8 @@ const workSans = Work_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Job-N-Me — Freelance Marketplace",
-  description: "Job-N-Me connects top freelancers with clients worldwide. Fast, flexible, escrow-protected.",
+  title: "JOB-N-ME — Freelance Marketplace",
+  description: "JOB-N-ME connects top freelancers with clients worldwide. Fast, flexible, escrow-protected.",
 };
 
 export default function RootLayout({
