@@ -1,55 +1,74 @@
 "use client"
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 export default function SignUp() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [taskManagerUrl, setTaskManagerUrl] = useState('');
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
+  const router = useRouter();
 
-  useEffect(() => {
-    setTaskManagerUrl(process.env.NEXT_PUBLIC_TASK_MANAGER_URL || 'http://localhost:3001');
-  }, []);
-
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    // Redirect to Task Manager registration
-    if (taskManagerUrl) {
-      window.location.href = `${taskManagerUrl}/register?name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}`;
-    }
-  };
+    setError('');
+    setLoading(true);
 
-  const redirectToTaskManager = () => {
-    if (taskManagerUrl) {
-      window.location.href = `${taskManagerUrl}/register`;
+    try {
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000';
+      const response = await fetch(`${apiUrl}/api/auth/register`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, password })
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Registration failed');
+      }
+
+      localStorage.setItem('token', data.token);
+      localStorage.setItem('user', JSON.stringify(data.user));
+      router.push('/dashboard');
+    } catch (err: any) {
+      setError(err.message || 'Something went wrong');
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <main className="min-h-screen bg-black flex items-center justify-center px-6 py-12">
+    <main className="min-h-screen bg-black flex items-center justify-center px-6">
       <div className="max-w-md w-full">
         <Link href="/" className="text-4xl font-bold text-yellow-400 block text-center mb-8">
-          Job-N-Me
+          JOB-N-ME
         </Link>
         <div className="bg-zinc-900 rounded-3xl p-8 border border-zinc-800">
-          <h1 className="text-3xl font-bold text-white mb-2">Get Started</h1>
-          <p className="text-zinc-400 mb-8">Create your account</p>
-          
+          <h1 className="text-3xl font-bold text-white mb-2">Create Account</h1>
+          <p className="text-zinc-400 mb-8">Sign up to get started</p>
+
+          {error && (
+            <div className="bg-red-500/10 border border-red-500 text-red-500 px-4 py-3 rounded-xl mb-6">
+              {error}
+            </div>
+          )}
+
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
-              <label className="text-white block mb-2 font-medium">Full Name</label>
+              <label className="text-white block mb-2 font-medium">Name</label>
               <input
                 type="text"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 className="w-full bg-black border border-zinc-700 rounded-xl px-4 py-3 text-white focus:border-yellow-400 focus:outline-none"
-                placeholder="John Doe"
+                placeholder="Your name"
                 required
+                disabled={loading}
               />
             </div>
-
             <div>
               <label className="text-white block mb-2 font-medium">Email</label>
               <input
@@ -59,9 +78,9 @@ export default function SignUp() {
                 className="w-full bg-black border border-zinc-700 rounded-xl px-4 py-3 text-white focus:border-yellow-400 focus:outline-none"
                 placeholder="you@example.com"
                 required
+                disabled={loading}
               />
             </div>
-            
             <div>
               <label className="text-white block mb-2 font-medium">Password</label>
               <input
@@ -71,26 +90,19 @@ export default function SignUp() {
                 className="w-full bg-black border border-zinc-700 rounded-xl px-4 py-3 text-white focus:border-yellow-400 focus:outline-none"
                 placeholder="••••••••"
                 required
+                disabled={loading}
               />
             </div>
-
             <button
               type="submit"
-              className="w-full bg-yellow-400 text-black py-4 rounded-full font-bold hover:bg-white transition-all"
+              disabled={loading}
+              className="w-full bg-yellow-400 text-black py-4 rounded-full font-bold hover:bg-white transition-all disabled:opacity-50"
             >
-              Create Account
+              {loading ? 'Creating account...' : 'Sign Up'}
             </button>
           </form>
 
-          <div className="mt-6 text-center">
-            <button
-              onClick={redirectToTaskManager}
-              className="text-yellow-400 hover:underline text-sm"
-            >
-            </button>
-          </div>
-
-          <p className="text-zinc-400 text-center mt-6">
+          <p className="text-center text-zinc-500 text-sm mt-6">
             Already have an account?{' '}
             <Link href="/auth/signin" className="text-yellow-400 hover:underline font-medium">
               Sign in
