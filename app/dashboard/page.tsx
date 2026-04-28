@@ -2,14 +2,32 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export default function Dashboard() {
+  const router = useRouter();
   const [orders, setOrders] = useState([]);
+  const [user, setUser] = useState({ name: "" });
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      router.push("/auth/signin");
+      return;
+    }
+
+    // Fetch user profile
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/profile`, {
+      headers: { Authorization: `Bearer ${token}` },
+    })
+      .then((res) => res.json())
+      .then((data) => setUser(data))
+      .catch(() => {});
+
+    // Fetch orders
     fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/orders`, {
-      headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+      headers: { Authorization: `Bearer ${token}` },
     })
       .then((res) => res.json())
       .then((data) => {
@@ -17,7 +35,7 @@ export default function Dashboard() {
         setLoading(false);
       })
       .catch(() => setLoading(false));
-  }, []);
+  }, [router]);
 
   const stats = [
     {
@@ -45,7 +63,7 @@ export default function Dashboard() {
           Welcome Back 👋
         </p>
         <h1 className="text-5xl md:text-7xl font-black text-white mb-6">
-          Your Dashboard
+          {user.name ? `${user.name}'s Dashboard` : "Your Dashboard"}
         </h1>
         <Link
           href="/services"
@@ -114,7 +132,7 @@ export default function Dashboard() {
                   </div>
                   <div>
                     <p className="font-bold text-lg text-white">
-                      {order.serviceName}
+                      {order.service_name}
                     </p>
                     <p className="text-zinc-500 text-sm">Order #{order.id}</p>
                   </div>
@@ -156,11 +174,11 @@ export default function Dashboard() {
         </Link>
 
         <Link
-          href="/dashboard/settings"
+          href="/dashboard/profile"
           className="group bg-zinc-900 border border-zinc-800 hover:border-yellow-400 rounded-2xl p-10 transition-all duration-300"
         >
-          <p className="text-5xl mb-6">⚙️</p>
-          <h3 className="text-2xl font-black text-white mb-2">Settings</h3>
+          <p className="text-5xl mb-6">👤</p>
+          <h3 className="text-2xl font-black text-white mb-2">Profile</h3>
           <p className="text-zinc-400 mb-4">Manage your account</p>
           <span className="text-yellow-400 font-bold group-hover:translate-x-2 inline-block transition-transform">
             →
