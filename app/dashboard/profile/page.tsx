@@ -1,21 +1,79 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 export default function Profile() {
+  const router = useRouter();
   const [editing, setEditing] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [profile, setProfile] = useState({
-    name: "John Doe",
-    email: "john@example.com",
-    company: "Tech Corp",
-    phone: "+1 (555) 123-4567",
-    address: "123 Main St, San Francisco, CA 94102",
+    name: "",
+    email: "",
+    company: "",
+    phone: "",
     avatar: "👤",
   });
 
-  const handleSave = () => {
-    setEditing(false);
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      router.push("/auth/signin");
+      return;
+    }
+
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/profile`, {
+      headers: { Authorization: `Bearer ${token}` },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setProfile({
+          name: data.name || "",
+          email: data.email || "",
+          company: data.company || "",
+          phone: data.phone || "",
+          avatar: "👤",
+        });
+        setLoading(false);
+      })
+      .catch(() => {
+        localStorage.removeItem("token");
+        router.push("/auth/signin");
+      });
+  }, [router]);
+
+  const handleSave = async () => {
+    const token = localStorage.getItem("token");
+    
+    try {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/profile`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          name: profile.name,
+          company: profile.company,
+          phone: profile.phone,
+        }),
+      });
+
+      if (res.ok) {
+        setEditing(false);
+      }
+    } catch (error) {
+      console.error("Update failed:", error);
+    }
   };
+
+  if (loading) {
+    return (
+      <div className="w-full min-h-screen bg-black flex items-center justify-center">
+        <div className="w-12 h-12 border-4 border-zinc-800 border-t-yellow-400 rounded-full animate-spin" />
+      </div>
+    );
+  }
 
   return (
     <div className="w-full min-h-screen bg-black p-8">
@@ -73,9 +131,8 @@ export default function Profile() {
               <input
                 type="email"
                 value={profile.email}
-                onChange={(e) => setProfile({ ...profile, email: e.target.value })}
-                disabled={!editing}
-                className="w-full px-4 py-3 bg-black border border-zinc-800 rounded-xl focus:outline-none focus:border-yellow-400 text-white disabled:opacity-50"
+                disabled
+                className="w-full px-4 py-3 bg-black border border-zinc-800 rounded-xl text-white opacity-50"
               />
             </div>
 
@@ -100,19 +157,6 @@ export default function Profile() {
                 type="tel"
                 value={profile.phone}
                 onChange={(e) => setProfile({ ...profile, phone: e.target.value })}
-                disabled={!editing}
-                className="w-full px-4 py-3 bg-black border border-zinc-800 rounded-xl focus:outline-none focus:border-yellow-400 text-white disabled:opacity-50"
-              />
-            </div>
-
-            <div className="md:col-span-2">
-              <label className="text-zinc-500 text-sm font-bold uppercase mb-2 block">
-                Address
-              </label>
-              <input
-                type="text"
-                value={profile.address}
-                onChange={(e) => setProfile({ ...profile, address: e.target.value })}
                 disabled={!editing}
                 className="w-full px-4 py-3 bg-black border border-zinc-800 rounded-xl focus:outline-none focus:border-yellow-400 text-white disabled:opacity-50"
               />
