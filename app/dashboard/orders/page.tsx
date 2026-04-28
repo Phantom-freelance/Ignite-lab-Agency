@@ -1,26 +1,33 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const FILTERS = ["all", "active", "completed", "pending"];
 
 export default function Orders() {
+  const router = useRouter();
   const [orders, setOrders] = useState([]);
   const [filter, setFilter] = useState("all");
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      router.push("/auth/signin");
+      return;
+    }
+
     fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/orders`, {
-      headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+      headers: { Authorization: `Bearer ${token}` },
     })
       .then((res) => res.json())
       .then((data) => {
-        setOrders(data.orders || []);
+        setOrders(data || []);
         setLoading(false);
       })
       .catch(() => setLoading(false));
-  }, []);
+  }, [router]);
 
   const filteredOrders =
     filter === "all"
@@ -42,13 +49,13 @@ export default function Orders() {
             <button
               key={f}
               onClick={() => setFilter(f)}
-              className={`px-6 py-3 rounded-full font-bold transition-all ${
+              className={`px-6 py-3 rounded-full font-bold transition-all capitalize ${
                 filter === f
                   ? "bg-yellow-400 text-black"
                   : "bg-zinc-900 border border-zinc-800 text-zinc-400 hover:border-yellow-400"
               }`}
             >
-              {f.charAt(0).toUpperCase() + f.slice(1)}
+              {f}
             </button>
           ))}
         </div>
@@ -61,48 +68,34 @@ export default function Orders() {
       ) : filteredOrders.length === 0 ? (
         <div className="text-center py-20 bg-zinc-900 border border-zinc-800 rounded-2xl">
           <p className="text-6xl mb-6">📭</p>
-          <p className="text-zinc-400 text-xl mb-8">
-            No {filter !== "all" ? filter : ""} orders found
-          </p>
-          <Link
-            href="/services"
-            className="inline-block bg-yellow-400 text-black px-8 py-4 rounded-full font-bold hover:bg-yellow-500 transition-all"
-          >
-            Browse Services
-          </Link>
+          <p className="text-zinc-400 text-xl mb-2">No {filter !== "all" ? filter : ""} orders found</p>
         </div>
       ) : (
         <div className="space-y-4">
           {(filteredOrders as any[]).map((order) => (
             <div
               key={order.id}
-              className="bg-zinc-900 border border-zinc-800 hover:border-yellow-400 rounded-2xl p-8 transition-all duration-300"
+              className="bg-zinc-900 border border-zinc-800 hover:border-yellow-400 rounded-2xl p-6 transition-all"
             >
               <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
-                <div className="flex items-center gap-6">
-                  <div className="w-16 h-16 rounded-2xl bg-yellow-400 flex items-center justify-center text-3xl">
-                    📦
-                  </div>
-                  <div>
-                    <p className="text-2xl font-black text-white mb-2">
-                      {order.serviceName}
-                    </p>
-                    <p className="text-zinc-500 mb-2">Order #{order.id}</p>
-                    <p className="text-zinc-400 text-sm">
-                      {new Date(order.createdAt).toLocaleDateString()}
-                    </p>
-                  </div>
+                <div>
+                  <h3 className="text-2xl font-black text-white mb-2">
+                    {order.service_name}
+                  </h3>
+                  <p className="text-zinc-500">Order ID: {order.id}</p>
+                  <p className="text-zinc-500 text-sm mt-1">
+                    {new Date(order.created_at).toLocaleDateString()}
+                  </p>
+                  {order.notes && (
+                    <p className="text-zinc-400 text-sm mt-2">{order.notes}</p>
+                  )}
                 </div>
-
                 <div className="flex items-center gap-6">
-                  <div className="text-right">
-                    <p className="text-zinc-500 text-sm mb-1">Amount</p>
-                    <p className="text-4xl font-black text-yellow-400">
-                      ${order.amount}
-                    </p>
-                  </div>
+                  <p className="text-3xl font-black text-yellow-400">
+                    ${order.amount}
+                  </p>
                   <span
-                    className={`px-6 py-3 rounded-full text-sm font-bold uppercase ${
+                    className={`px-4 py-2 rounded-full text-xs font-bold uppercase ${
                       order.status === "completed"
                         ? "bg-green-500/20 text-green-400"
                         : order.status === "active"
@@ -114,12 +107,6 @@ export default function Orders() {
                   </span>
                 </div>
               </div>
-
-              {order.notes && (
-                <div className="mt-6 pt-6 border-t border-zinc-800">
-                  <p className="text-zinc-400">{order.notes}</p>
-                </div>
-              )}
             </div>
           ))}
         </div>

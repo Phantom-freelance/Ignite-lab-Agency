@@ -1,17 +1,17 @@
 "use client";
 
-import { useState } from "react";
-import Link from "next/link";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 export default function Settings() {
+  const router = useRouter();
   const [profile, setProfile] = useState({
-    name: "John Doe",
-    email: "john@example.com",
-    company: "Acme Inc",
-    phone: "+1 234 567 8900",
+    name: "",
+    email: "",
+    company: "",
+    phone: "",
   });
+  const [loading, setLoading] = useState(true);
   const [saved, setSaved] = useState(false);
   const [notifications, setNotifications] = useState({
     email: true,
@@ -20,9 +20,56 @@ export default function Settings() {
     reports: true,
   });
 
-  const handleSave = () => {
-    setSaved(true);
-    setTimeout(() => setSaved(false), 3000);
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      router.push("/auth/signin");
+      return;
+    }
+
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/profile`, {
+      headers: { Authorization: `Bearer ${token}` },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setProfile({
+          name: data.name || "",
+          email: data.email || "",
+          company: data.company || "",
+          phone: data.phone || "",
+        });
+        setLoading(false);
+      })
+      .catch(() => {
+        localStorage.removeItem("token");
+        router.push("/auth/signin");
+      });
+  }, [router]);
+
+  const handleSave = async () => {
+    const token = localStorage.getItem("token");
+    
+    try {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/profile`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          name: profile.name,
+          company: profile.company,
+          phone: profile.phone,
+        }),
+      });
+
+      if (res.ok) {
+        setSaved(true);
+        setTimeout(() => setSaved(false), 3000);
+      }
+    } catch (error) {
+      console.error("Update failed:", error);
+    }
   };
 
   const toggleNotif = (key: string) =>
@@ -38,153 +85,116 @@ export default function Settings() {
     { key: "reports", label: "Weekly Reports", desc: "Account activity summaries" },
   ];
 
-  return (
-    <main className="w-full min-h-screen flex flex-col bg-black">
-      <Navbar />
+  if (loading) {
+    return (
+      <div className="w-full min-h-screen bg-black flex items-center justify-center">
+        <div className="w-12 h-12 border-4 border-zinc-800 border-t-yellow-400 rounded-full animate-spin" />
+      </div>
+    );
+  }
 
-      <div className="flex-1 w-full pt-32 pb-20">
-        <div className="max-w-4xl mx-auto px-6 md:px-12">
+  return (
+    <div className="w-full min-h-screen bg-black p-8">
+      <div className="max-w-4xl mx-auto">
+        
+        <div className="mb-12">
+          <p className="text-yellow-400 font-black uppercase tracking-widest text-sm mb-4">
+            Account Settings ⚙️
+          </p>
+          <h1 className="text-5xl md:text-7xl font-black text-white">
+            Settings
+          </h1>
+        </div>
+
+        {saved && (
+          <div className="bg-green-500/20 border border-green-500 text-green-400 px-6 py-4 rounded-xl mb-8 font-bold">
+            ✓ Settings saved successfully!
+          </div>
+        )}
+
+        <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-8 mb-8">
+          <h2 className="text-2xl font-black text-white mb-6">Profile Information</h2>
           
-          {/* Header */}
-          <div className="mb-12">
-            <Link
-              href="/dashboard"
-              className="inline-flex items-center gap-2 text-zinc-500 hover:text-yellow-400 transition-colors text-sm mb-8 font-bold"
-            >
-              ← Back to Dashboard
-            </Link>
-            <p className="text-yellow-400 font-black uppercase tracking-widest text-sm mb-4">
-              Your Account
-            </p>
-            <h1 className="text-5xl md:text-7xl font-black text-white">
-              Settings
-            </h1>
+          <div className="grid md:grid-cols-2 gap-6">
+            <div>
+              <label className="text-zinc-500 text-sm font-bold uppercase mb-2 block">Name</label>
+              <input
+                type="text"
+                value={profile.name}
+                onChange={(e) => setProfile({ ...profile, name: e.target.value })}
+                className="w-full px-4 py-3 bg-black border border-zinc-800 rounded-xl text-white focus:border-yellow-400 focus:outline-none"
+              />
+            </div>
+            <div>
+              <label className="text-zinc-500 text-sm font-bold uppercase mb-2 block">Email</label>
+              <input
+                type="email"
+                value={profile.email}
+                disabled
+                className="w-full px-4 py-3 bg-black border border-zinc-800 rounded-xl text-white opacity-50"
+              />
+            </div>
+            <div>
+              <label className="text-zinc-500 text-sm font-bold uppercase mb-2 block">Company</label>
+              <input
+                type="text"
+                value={profile.company}
+                onChange={(e) => setProfile({ ...profile, company: e.target.value })}
+                className="w-full px-4 py-3 bg-black border border-zinc-800 rounded-xl text-white focus:border-yellow-400 focus:outline-none"
+              />
+            </div>
+            <div>
+              <label className="text-zinc-500 text-sm font-bold uppercase mb-2 block">Phone</label>
+              <input
+                type="tel"
+                value={profile.phone}
+                onChange={(e) => setProfile({ ...profile, phone: e.target.value })}
+                className="w-full px-4 py-3 bg-black border border-zinc-800 rounded-xl text-white focus:border-yellow-400 focus:outline-none"
+              />
+            </div>
           </div>
 
-          {/* Profile Section */}
-          <section className="bg-zinc-900 border border-zinc-800 rounded-2xl p-8 md:p-10 mb-8 hover:border-yellow-400 transition-all duration-300">
-            <div className="flex items-center gap-4 mb-8">
-              <div className="w-16 h-16 rounded-2xl bg-yellow-400 flex items-center justify-center text-3xl">
-                👤
-              </div>
-              <div>
-                <h2 className="text-2xl font-black text-white">Profile</h2>
-                <p className="text-zinc-500 text-sm">Your personal information</p>
-              </div>
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-6">
-              {[
-                { label: "Full Name", key: "name", type: "text" },
-                { label: "Email Address", key: "email", type: "email" },
-                { label: "Company", key: "company", type: "text" },
-                { label: "Phone", key: "phone", type: "tel" },
-              ].map((field) => (
-                <div key={field.key}>
-                  <label className="block text-zinc-500 text-sm font-bold uppercase tracking-wider mb-2">
-                    {field.label}
-                  </label>
-                  <input
-                    type={field.type}
-                    value={profile[field.key as keyof typeof profile]}
-                    onChange={(e) =>
-                      setProfile({ ...profile, [field.key]: e.target.value })
-                    }
-                    className="w-full px-5 py-4 bg-black border border-zinc-800 rounded-xl focus:outline-none focus:border-yellow-400 transition-all text-white"
-                  />
-                </div>
-              ))}
-            </div>
-          </section>
-
-          {/* Notifications Section */}
-          <section className="bg-zinc-900 border border-zinc-800 rounded-2xl p-8 md:p-10 mb-8 hover:border-yellow-400 transition-all duration-300">
-            <div className="flex items-center gap-4 mb-8">
-              <div className="w-16 h-16 rounded-2xl bg-yellow-400 flex items-center justify-center text-3xl">
-                🔔
-              </div>
-              <div>
-                <h2 className="text-2xl font-black text-white">Notifications</h2>
-                <p className="text-zinc-500 text-sm">Control what you hear from us</p>
-              </div>
-            </div>
-
-            <div className="space-y-4">
-              {notifItems.map((item) => (
-                <div
-                  key={item.key}
-                  onClick={() => toggleNotif(item.key)}
-                  className="flex items-center justify-between cursor-pointer p-5 rounded-xl hover:bg-black transition-all duration-200"
-                >
-                  <div>
-                    <p className="font-bold text-white mb-1">{item.label}</p>
-                    <p className="text-zinc-500 text-sm">{item.desc}</p>
-                  </div>
-                  <div
-                    className={`relative w-14 h-7 rounded-full transition-all duration-300 ${
-                      notifications[item.key as keyof typeof notifications]
-                        ? "bg-yellow-400"
-                        : "bg-zinc-800"
-                    }`}
-                  >
-                    <div
-                      className={`absolute top-1 w-5 h-5 bg-black rounded-full transition-all duration-300 ${
-                        notifications[item.key as keyof typeof notifications]
-                          ? "translate-x-7"
-                          : "translate-x-1"
-                      }`}
-                    />
-                  </div>
-                </div>
-              ))}
-            </div>
-          </section>
-
-          {/* Security Section */}
-          <section className="bg-zinc-900 border border-zinc-800 rounded-2xl p-8 md:p-10 mb-10 hover:border-yellow-400 transition-all duration-300">
-            <div className="flex items-center gap-4 mb-8">
-              <div className="w-16 h-16 rounded-2xl bg-yellow-400 flex items-center justify-center text-3xl">
-                🔒
-              </div>
-              <div>
-                <h2 className="text-2xl font-black text-white">Security</h2>
-                <p className="text-zinc-500 text-sm">Protect your account</p>
-              </div>
-            </div>
-
-            <div className="space-y-4">
-              {[
-                { label: "Change Password", desc: "Update login credentials" },
-                { label: "Two-Factor Auth", desc: "Extra layer of protection" },
-                { label: "Active Sessions", desc: "Review logged devices" },
-              ].map((item) => (
-                <button
-                  key={item.label}
-                  className="w-full flex items-center justify-between p-5 bg-black border border-zinc-800 hover:border-yellow-400 rounded-xl text-left group transition-all duration-300"
-                >
-                  <div>
-                    <p className="font-bold text-white mb-1">{item.label}</p>
-                    <p className="text-zinc-500 text-sm">{item.desc}</p>
-                  </div>
-                  <span className="text-zinc-500 group-hover:text-yellow-400 group-hover:translate-x-2 transition-all duration-300 text-xl">
-                    →
-                  </span>
-                </button>
-              ))}
-            </div>
-          </section>
-
-          {/* Save Button */}
           <button
             onClick={handleSave}
-            className="w-full py-5 rounded-full bg-yellow-400 text-black text-xl font-black hover:bg-yellow-500 transition-all active:scale-95"
+            className="mt-6 px-8 py-3 bg-yellow-400 text-black rounded-full font-bold hover:bg-yellow-500 transition-all"
           >
-            {saved ? "✓ Saved!" : "Save Changes"}
+            Save Changes
           </button>
         </div>
-      </div>
 
-      <Footer />
-    </main>
+        <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-8">
+          <h2 className="text-2xl font-black text-white mb-6">Notifications</h2>
+          <div className="space-y-4">
+            {notifItems.map((item) => (
+              <div
+                key={item.key}
+                className="flex items-center justify-between p-4 bg-black border border-zinc-800 rounded-xl"
+              >
+                <div>
+                  <p className="font-bold text-white">{item.label}</p>
+                  <p className="text-zinc-500 text-sm">{item.desc}</p>
+                </div>
+                <button
+                  onClick={() => toggleNotif(item.key)}
+                  className={`w-14 h-8 rounded-full transition-all ${
+                    notifications[item.key as keyof typeof notifications]
+                      ? "bg-yellow-400"
+                      : "bg-zinc-700"
+                  }`}
+                >
+                  <div
+                    className={`w-6 h-6 rounded-full bg-black transition-transform ${
+                      notifications[item.key as keyof typeof notifications]
+                        ? "translate-x-7"
+                        : "translate-x-1"
+                    }`}
+                  />
+                </button>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }

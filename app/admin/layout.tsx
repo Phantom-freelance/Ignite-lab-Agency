@@ -34,7 +34,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     <div className="min-h-screen bg-black flex">
       <aside className="w-64 bg-zinc-900 border-r border-zinc-800 fixed h-full z-50">
         <div className="p-6">
-          <Link href="/" className="text-2xl font-black text-yellow-400 mb-1 block">BBR AGENCY</Link>
+          <Link href="/" className="text-2xl font-black text-yellow-400 mb-1 block">JOB-N-ME</Link>
           <p className="text-zinc-500 text-sm font-bold mb-8">ADMIN PANEL</p>
           <nav className="space-y-2">
             {navItems.map((item) => (
