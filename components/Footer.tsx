@@ -45,7 +45,7 @@ const Footer = () => {
               Job-N-Me — Uniting top freelancers with clients worldwide. Fast, flexible, escrow-protected.
             </p>
             <p className="text-zinc-500 text-sm mt-4">
-              Need help? <a href="mailto:support@job-n-me.com" className="text-yellow-400 hover:underline">support@job-n-me.com</a>
+              Need help? <a href="mailto:support@jobnme.com" className="text-yellow-400 hover:underline">support@jobnme.com</a>
             </p>
           </motion.div>
 
