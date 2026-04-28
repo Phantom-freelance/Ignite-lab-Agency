@@ -13,8 +13,8 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         <div className="min-h-screen bg-black flex">
           <aside className="w-64 bg-zinc-900 border-r border-zinc-800 fixed h-full overflow-y-auto">
             <div className="p-6">
-              <Link href="/" className="text-2xl font-black text-yellow-400">BBR Agency</Link>
-              <p className="text-zinc-500 text-sm font-bold mb-8">CLIENT PORTAL</p>
+              <Link href="/" className="text-2xl font-black text-yellow-400">JOB-N-ME</Link>
+              <p className="text-zinc-500 text-sm font-bold mb-8">PLATFORM</p>
               <nav className="space-y-2">
                 <Link href="/dashboard" className={`flex items-center gap-3 px-4 py-3 rounded-xl font-bold ${pathname === "/dashboard" ? "bg-yellow-400 text-black" : "text-zinc-400 hover:bg-zinc-800"}`}>📊 Dashboard</Link>
                 <Link href="/dashboard/orders" className={`flex items-center gap-3 px-4 py-3 rounded-xl font-bold ${pathname === "/dashboard/orders" ? "bg-yellow-400 text-black" : "text-zinc-400 hover:bg-zinc-800"}`}>📦 Orders</Link>

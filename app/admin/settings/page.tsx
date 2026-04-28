@@ -5,7 +5,7 @@ import { useState } from "react";
 export default function AdminSettings() {
   const [saved, setSaved] = useState(false);
   const [settings, setSettings] = useState({
-    siteName: "BBR Agency",
+    siteName: "JOB-N-ME",
     siteEmail: "hello@JOB-N-ME.com",
     supportEmail: "support@JOB-N-ME.com",
     phone: "+1 (555) 000-0000",
