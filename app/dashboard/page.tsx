@@ -178,7 +178,7 @@ export default function Dashboard() {
         </Link>
 
         <Link
-          href="/dashboard/profile"
+          href="/dashboard/settings"
           className="group bg-zinc-900 border border-zinc-800 hover:border-yellow-400 rounded-2xl p-10 transition-all duration-300"
         >
           <p className="text-5xl mb-6">👤</p>
