@@ -39,7 +39,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
           <motion.div variants={itemVariants}>
             <h3 className="text-yellow-400 text-4xl font-black mb-6 tracking-tight">
-              job<span className="text-white">nme</span>
+              JOB-<span className="text-white">N</span>-ME
             </h3>
             <p className="text-zinc-400 text-sm leading-relaxed">
               Job-N-Me — Uniting top freelancers with clients worldwide. Fast, flexible, escrow-protected.
