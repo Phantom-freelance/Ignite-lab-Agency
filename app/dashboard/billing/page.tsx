@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 
 export default function Billing() {
   const router = useRouter();
-  const [invoices, setInvoices] = useState([]);
+  const [invoices, setInvoices] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -20,14 +20,18 @@ export default function Billing() {
     })
       .then((res) => res.json())
       .then((data) => {
-        setInvoices(data || []);
+        // Backend returns array directly from /invoices endpoint
+        setInvoices(Array.isArray(data) ? data : []);
         setLoading(false);
       })
-      .catch(() => setLoading(false));
+      .catch((err) => {
+        console.error("Billing fetch error:", err);
+        setLoading(false);
+      });
   }, [router]);
 
-  const totalSpent = invoices.reduce((sum: number, inv: any) => sum + (inv.amount || 0), 0);
-  const paidCount = invoices.filter((inv: any) => inv.status === "paid").length;
+  const totalSpent = invoices.reduce((sum, inv) => sum + (parseFloat(inv.amount) || 0), 0);
+  const paidCount = invoices.filter((inv) => inv.status === "paid").length;
 
   return (
     <div className="w-full min-h-screen bg-black p-8">
@@ -54,7 +58,7 @@ export default function Billing() {
           <div className="bg-zinc-900 border border-zinc-800 rounded-2xl p-8">
             <p className="text-zinc-500 text-sm font-bold uppercase mb-2">Pending</p>
             <p className="text-4xl font-black text-orange-400">
-              {invoices.filter((inv: any) => inv.status === "unpaid").length}
+              {invoices.filter((inv) => inv.status === "unpaid").length}
             </p>
           </div>
         </div>
@@ -73,7 +77,7 @@ export default function Billing() {
             </div>
           ) : (
             <div className="space-y-4">
-              {(invoices as any[]).map((invoice) => (
+              {invoices.map((invoice) => (
                 <div
                   key={invoice.id}
                   className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-black border border-zinc-800 rounded-xl p-6"

@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 
 export default function Dashboard() {
   const router = useRouter();
-  const [orders, setOrders] = useState([]);
+  const [orders, setOrders] = useState<any[]>([]);
   const [user, setUser] = useState({ name: "" });
   const [loading, setLoading] = useState(true);
 
@@ -31,26 +31,30 @@ export default function Dashboard() {
     })
       .then((res) => res.json())
       .then((data) => {
-        setOrders(data.orders || []);
+        // Backend returns array directly
+        setOrders(Array.isArray(data) ? data : []);
         setLoading(false);
       })
-      .catch(() => setLoading(false));
+      .catch((err) => {
+        console.error("Orders fetch error:", err);
+        setLoading(false);
+      });
   }, [router]);
 
   const stats = [
     {
       label: "Active Orders",
-      value: orders.filter((o: any) => o.status === "active").length,
+      value: orders.filter((o) => o.status === "active").length,
       icon: "🚀",
     },
     {
       label: "Completed",
-      value: orders.filter((o: any) => o.status === "completed").length,
+      value: orders.filter((o) => o.status === "completed").length,
       icon: "✨",
     },
     {
       label: "Total Spent",
-      value: `$${orders.reduce((sum: number, o: any) => sum + (o.amount || 0), 0).toFixed(2)}`,
+      value: `$${orders.reduce((sum, o) => sum + (parseFloat(o.amount) || 0), 0).toFixed(2)}`,
       icon: "💎",
     },
   ];
@@ -121,7 +125,7 @@ export default function Dashboard() {
           </div>
         ) : (
           <div className="space-y-4">
-            {(orders as any[]).slice(0, 5).map((order) => (
+            {orders.slice(0, 5).map((order) => (
               <div
                 key={order.id}
                 className="flex flex-col md:flex-row md:items-center justify-between gap-6 bg-black border border-zinc-800 hover:border-yellow-400 rounded-xl p-6 transition-all duration-300"
@@ -132,7 +136,7 @@ export default function Dashboard() {
                   </div>
                   <div>
                     <p className="font-bold text-lg text-white">
-                      {order.service_name}
+                      {order.service_name || "Service"}
                     </p>
                     <p className="text-zinc-500 text-sm">Order #{order.id}</p>
                   </div>

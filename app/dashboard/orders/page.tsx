@@ -7,7 +7,7 @@ const FILTERS = ["all", "active", "completed", "pending"];
 
 export default function Orders() {
   const router = useRouter();
-  const [orders, setOrders] = useState([]);
+  const [orders, setOrders] = useState<any[]>([]);
   const [filter, setFilter] = useState("all");
   const [loading, setLoading] = useState(true);
 
@@ -23,16 +23,20 @@ export default function Orders() {
     })
       .then((res) => res.json())
       .then((data) => {
-        setOrders(data || []);
+        // Backend returns array directly
+        setOrders(Array.isArray(data) ? data : []);
         setLoading(false);
       })
-      .catch(() => setLoading(false));
+      .catch((err) => {
+        console.error("Orders fetch error:", err);
+        setLoading(false);
+      });
   }, [router]);
 
   const filteredOrders =
     filter === "all"
       ? orders
-      : orders.filter((o: any) => o.status === filter);
+      : orders.filter((o) => o.status === filter);
 
   return (
     <div className="w-full min-h-screen bg-black p-8">
@@ -72,7 +76,7 @@ export default function Orders() {
         </div>
       ) : (
         <div className="space-y-4">
-          {(filteredOrders as any[]).map((order) => (
+          {filteredOrders.map((order) => (
             <div
               key={order.id}
               className="bg-zinc-900 border border-zinc-800 hover:border-yellow-400 rounded-2xl p-6 transition-all"
@@ -80,7 +84,7 @@ export default function Orders() {
               <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
                 <div>
                   <h3 className="text-2xl font-black text-white mb-2">
-                    {order.service_name}
+                    {order.service_name || "Service"}
                   </h3>
                   <p className="text-zinc-500">Order ID: {order.id}</p>
                   <p className="text-zinc-500 text-sm mt-1">
